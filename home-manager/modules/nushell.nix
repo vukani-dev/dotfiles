@@ -32,6 +32,7 @@
     shellAliases = {
       la = "ls -la";
       ll = "ls -l";
+      lg = "lazygit";
       d = "cd /home/vukani/.dotfiles";
       v = "nvim .";
       y = "sudo yazi";
