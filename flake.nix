@@ -32,7 +32,9 @@
   in {
     nixosConfigurations = {
       necessary = lib.nixosSystem {
-        specialArgs = {inherit inputs system;};
+        specialArgs = {
+          inherit inputs system;
+        };
         modules = [
           ./machines/necessary
           (nix-hardware + /microsoft/surface/surface-pro-intel)
@@ -40,13 +42,17 @@
         ];
       };
       dala = lib.nixosSystem {
-        specialArgs = {inherit inputs system;};
+        specialArgs = {
+          inherit inputs system;
+        };
         modules = [
           ./machines/dala
         ];
       };
       monk = lib.nixosSystem {
-        specialArgs = {inherit inputs system;};
+        specialArgs = {
+          inherit inputs system;
+        };
         modules = [
           ./machines/monk
           (nix-hardware + /lenovo/thinkpad/x220)

@@ -1,4 +1,4 @@
-{
+{...}: {
   programs.nushell = {
     enable = true;
     extraConfig = ''
@@ -37,7 +37,7 @@
       v = "nvim .";
       y = "sudo yazi";
       up = "sudo nix flake update /home/vukani/.dotfiles/.";
-      nx = "sudo nixos-rebuild switch --flake /home/vukani/.dotfiles/.#necessary";
+      nx = "sudo nixos-rebuild switch --flake /home/vukani/.dotfiles/.#" + "(sys).host.hostname";
       nix-shell = "nix-shell --command 'nu'";
     };
   };
