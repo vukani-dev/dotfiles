@@ -4,7 +4,7 @@
     theme = {
       name = "Catppuccin-Macchiato-Compact-Pink-Dark";
       package = pkgs.catppuccin-gtk.override {
-        accents = ["pink"];
+        accents = ["peach"];
         size = "compact";
         tweaks = ["rimless" "black"];
         variant = "macchiato";
