@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Get the hostname
 my_hostname=$(hostname)

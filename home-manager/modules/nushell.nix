@@ -37,6 +37,7 @@
       v = "nvim .";
       y = "sudo yazi";
       up = "sudo nix flake update /home/vukani/.dotfiles/.";
+      nx = "/home/vukani/scripts/rebuild.sh";
       nix-shell = "nix-shell --command 'nu'";
     };
   };
