@@ -36,6 +36,6 @@ sound () {
 
 while true 
 do 
-    xsetroot -name "$(sound) | $(bat) | $(dte) "
+    xsetroot -name " $(sound) | $(bat) | $(dte) "
     sleep .5 
 done
