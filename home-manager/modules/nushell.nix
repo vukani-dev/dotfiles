@@ -2,7 +2,6 @@
   programs.nushell = {
     enable = true;
     extraConfig = ''
-      echo (http get https://zenquotes.io/api/today).q
       let carapace_completer = {|spans|
       carapace $spans.0 nushell $spans | from json
       }
