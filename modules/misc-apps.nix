@@ -28,6 +28,7 @@
     flameshot
     neofetch
     vim
+    google-chrome
   ];
 in {
   environment.systemPackages = apps;
