@@ -1,5 +1,7 @@
 {pkgs, ...}: let
   apps = with pkgs; [
+    freerdp
+    remmina
     keepassxc
     bluetuith
     mpv
