@@ -1,7 +1,8 @@
 {pkgs, ...}: let
   apps = with pkgs; [
     freerdp
-    remmina
+    libreoffice
+    onlyoffice-bin
     keepassxc
     bluetuith
     mpv

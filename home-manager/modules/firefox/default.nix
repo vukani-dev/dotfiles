@@ -21,6 +21,10 @@
           url = "http://10.0.0.2:8006";
         }
         {
+          name = "Homelab Dash";
+          url = "http://10.0.0.5:3000";
+        }
+        {
           name = "TrueNas";
           url = "http://10.0.0.4";
         }
