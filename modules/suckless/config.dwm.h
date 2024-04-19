@@ -273,6 +273,8 @@ static const char *codiumcmd[] = {"codium", NULL};
 static const char *keepasscmd[] = {"keepassxc", NULL};
 static const char *logseqcmd[] = {"logseq", NULL};
 
+
+/* HOTKEYS */
 static const Key keys[] = {
     /* modifier                     key            function argument */
     {MODKEY, XK_r, spawn, {.v = roficmd}},
@@ -329,6 +331,7 @@ static const Key keys[] = {
     {MODKEY| ShiftMask, XK_s, spawn, SHCMD("flameshot launcher")},
     {MODKEY | ShiftMask, XK_m, spawn,
      SHCMD("/home/vukani/scripts/toggle-monitors.sh")},
+    {MODKEY | ShiftMask, XK_x, spawn, SHCMD("st -e sudo slock")},
 
     // GENERAL SHORTCUTS
     // {MODKEY | ShiftMask, XK_d, spawn, SHCMD("st cd /home/vukani/.dotfiles && nvim")},
