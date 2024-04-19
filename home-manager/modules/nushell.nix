@@ -1,6 +1,6 @@
 {...}: {
   programs.nushell = {
-    enable = true;
+    enable = false;
     extraConfig = ''
       let carapace_completer = {|spans|
       carapace $spans.0 nushell $spans | from json
@@ -28,6 +28,13 @@
       append /home/vukani/scripts
       )
     '';
+    # extraEnv = ''
+    #   $env.SHELL = "nu";
+    #   $env.TERM = "st";
+    #   $env.EDITOR = "nvim";
+    #   $env.FLAKE = "/home/vukani/.dotfiles";
+    #   $env.FLAKEREF = "/home/vukani/.dotfiles";
+    # '';
     shellAliases = {
       la = "ls -la";
       ll = "ls -l";

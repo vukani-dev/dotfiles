@@ -1,5 +1,6 @@
 {pkgs, ...}: let
   apps = with pkgs; [
+    nh
     freerdp
     libreoffice
     onlyoffice-bin

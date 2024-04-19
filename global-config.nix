@@ -67,12 +67,14 @@
   services.blueman.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  programs.zsh.enable = true;
   users.users.vukani = {
     isNormalUser = true;
     description = "vukani";
     extraGroups = ["networkmanager" "wheel"];
-    shell = pkgs.nushell;
+    shell = pkgs.zsh;
   };
+  users.defaultUserShell = pkgs.zsh;
 
   nixpkgs.config.allowUnfree = true;
 
