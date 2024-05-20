@@ -327,7 +327,7 @@ static const Key keys[] = {
     {MODKEY | ShiftMask, XK_b, spawn, SHCMD("st -e bluetuith")},
     {MODKEY, XK_y, spawn, SHCMD("st -e yazi")},
     {MODKEY, XK_i, spawn, SHCMD("st -e nmtui")},
-    {MODKEY, XK_q, spawn, SHCMD("st -e htop")},
+    {MODKEY, XK_q, spawn, SHCMD("st -e gotop")},
     {MODKEY| ShiftMask, XK_s, spawn, SHCMD("flameshot launcher")},
     {MODKEY | ShiftMask, XK_m, spawn,
      SHCMD("/home/vukani/scripts/toggle-monitors.sh")},

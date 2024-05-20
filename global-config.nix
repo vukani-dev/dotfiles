@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  config,
   ...
 }: {
   imports = [
@@ -16,6 +17,9 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  services.nfs.server = {
+    enable = true;
+  };
 
   # Set your time zone.
   time.timeZone = "America/New_York";

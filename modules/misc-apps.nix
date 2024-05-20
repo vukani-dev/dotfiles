@@ -1,5 +1,8 @@
 {pkgs, ...}: let
   apps = with pkgs; [
+    gotop
+    cmus
+    nfs-utils
     nh
     freerdp
     libreoffice

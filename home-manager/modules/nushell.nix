@@ -44,7 +44,7 @@
       y = "sudo yazi";
       up = "sudo nix flake update /home/vukani/.dotfiles/.";
       nx = "/home/vukani/scripts/rebuild.sh";
-      nix-shell = "nix-shell --command 'nu'";
+      nix-shell = "nix-shell --command 'zsh'";
       win = "xfreerdp /u:vukani /v:10.0.1.78 /sound /dynamic-resolution";
     };
   };
