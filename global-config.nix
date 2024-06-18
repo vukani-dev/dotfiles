@@ -8,6 +8,7 @@
     inputs.home-manager.nixosModules.home-manager
     ./modules/suckless
     ./modules/misc-apps.nix
+    ./modules/cursor.nix
   ];
 
   nix.settings = {
