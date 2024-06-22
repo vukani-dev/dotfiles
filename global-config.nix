@@ -8,7 +8,6 @@
     inputs.home-manager.nixosModules.home-manager
     ./modules/suckless
     ./modules/misc-apps.nix
-    ./modules/cursor.nix
   ];
 
   nix.settings = {
@@ -82,6 +81,7 @@
   users.defaultUserShell = pkgs.zsh;
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = ["electron-28.3.3"];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
