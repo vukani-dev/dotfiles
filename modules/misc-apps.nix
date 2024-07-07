@@ -1,5 +1,6 @@
 {pkgs, ...}: let
   apps = with pkgs; [
+    feather
     gotop
     cmus
     nfs-utils
