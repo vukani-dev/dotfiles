@@ -66,6 +66,7 @@
         ublock-origin
         vimium
         keepassxc-browser
+        firefox-color
       ];
 
       settings = {
