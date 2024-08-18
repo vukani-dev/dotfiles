@@ -1,0 +1,19 @@
+[[manager.prepend_keymap]]
+on   = "Q"
+run  = 'quit'
+
+[[manager.prepend_keymap]]
+on   = "q"
+run  = 'quit --no-cwd-file'
+
+[[manager.prepend_keymap]]
+on   = "m"
+run  = 'cd /mnt'
+
+[[manager.prepend_keymap]]
+on   = "H"
+run  = 'cd /home/vukani'
+
+[[manager.prepend_keymap]]
+on   = "C"
+run  = 'cd /home/vukani/.dotfiles'

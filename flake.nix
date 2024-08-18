@@ -19,12 +19,17 @@
       url = "github:nixos/nixos-hardware/1e679b9a9970780cd5d4dfe755a74a8f96d33388";
       flake = false;
     };
+    # nixos-cosmic = {
+    #   url = "github:lilyinstarlight/nixos-cosmic";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs = {
     self,
     nixpkgs,
     nix-hardware,
+    # nixos-cosmic,
     ...
   } @ inputs: let
     lib = nixpkgs.lib;
@@ -46,6 +51,13 @@
           inherit inputs system;
         };
         modules = [
+          # {
+          #   nix.settings = {
+          #     substituters = ["https://cosmic.cachix.org/"];
+          #     trusted-public-keys = ["cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="];
+          #   };
+          # }
+          # nixos-cosmic.nixosModules.default
           ./machines/dala
         ];
       };

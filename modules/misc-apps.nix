@@ -1,5 +1,8 @@
 {pkgs, ...}: let
   apps = with pkgs; [
+    hledger
+    git-agecrypt
+    monero-gui
     feather
     gotop
     cmus

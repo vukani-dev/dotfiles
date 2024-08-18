@@ -39,6 +39,9 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  # hardware.system76.enableAll = true;
+  # services.desktopManager.cosmic.enable = true;
+  # services.displayManager.cosmic-greeter.enable = true;
   # Configure X11 with DWM
   services.xserver = {
     windowManager.dwm.enable = true;
@@ -56,7 +59,7 @@
   };
 
   # AUDIO
-  sound.enable = true;
+  # sound.enable = true;
   hardware.pulseaudio.enable = false;
   services.pipewire = {
     enable = true;
@@ -81,7 +84,7 @@
   users.defaultUserShell = pkgs.zsh;
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = ["electron-28.3.3"];
+  nixpkgs.config.permittedInsecurePackages = ["electron-27.3.11"];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

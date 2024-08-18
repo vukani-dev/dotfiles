@@ -88,7 +88,7 @@
         "extensions.formautofill.creditCards.enabled" = false;
         "browser.download.useDownloadDir" = false;
       };
-      userChrome = builtins.readFile ./userChrome.css;
+      # userChrome = builtins.readFile ./userChrome.css;
     };
   };
 }
