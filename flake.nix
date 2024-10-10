@@ -36,6 +36,15 @@
     system = "x86_64-linux";
   in {
     nixosConfigurations = {
+      marga = lib.nixosSystem {
+        specialArgs = {
+          inherit inputs system;
+        };
+        modules = [
+          ./machines/marga
+          (nix-hardware + /dell/precision/5560)
+        ];
+      };
       necessary = lib.nixosSystem {
         specialArgs = {
           inherit inputs system;
@@ -43,7 +52,6 @@
         modules = [
           ./machines/necessary
           (nix-hardware + /microsoft/surface/surface-pro-intel)
-          # nixos-hardware.nixosModules.microsoft-surface-pro-intel
         ];
       };
       dala = lib.nixosSystem {

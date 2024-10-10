@@ -67,6 +67,7 @@
         vimium
         keepassxc-browser
         firefox-color
+        metamask
       ];
 
       settings = {

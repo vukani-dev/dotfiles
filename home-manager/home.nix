@@ -9,7 +9,6 @@
     ./modules/firefox
     ./modules/zsh.nix
     ./modules/zellij.nix
-    ./modules/helix.nix
     ./modules/starship.nix
     ./modules/gtk.nix
     ./modules/rofi
@@ -29,6 +28,7 @@
     FLAKEREF = "/home/vukani/.dotfiles";
     SHELL = "zsh";
     TERM = "st";
+    LEDGER_FILE = "/home/vukani/documents/accounting/book.ledger";
   };
 
   home.sessionPath = [

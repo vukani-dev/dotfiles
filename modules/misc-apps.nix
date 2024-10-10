@@ -1,16 +1,16 @@
 {pkgs, ...}: let
   apps = with pkgs; [
-    hledger
-    git-agecrypt
-    monero-gui
-    feather
+    keymapp
+    qbittorrent
+    arandr
+    trezor-suite
+    trezor-udev-rules
     gotop
     cmus
     nfs-utils
     nh
     freerdp
     libreoffice
-    onlyoffice-bin
     keepassxc
     bluetuith
     mpv

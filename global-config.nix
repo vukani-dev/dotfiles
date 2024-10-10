@@ -1,7 +1,6 @@
 {
   inputs,
   pkgs,
-  config,
   ...
 }: {
   imports = [
@@ -14,12 +13,18 @@
     experimental-features = ["nix-command" "flakes"];
     auto-optimise-store = true;
   };
+  hardware.keyboard.zsa.enable = true;
 
   # Enable networking
   networking.networkmanager.enable = true;
   services.nfs.server = {
     enable = true;
   };
+  networking.hosts = {
+    # "4.154.251.210" = ["test-tool.orangesmake-44ff8739.westus2.azurecontainerapps.io"];
+  };
+
+  services.trezord.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/New_York";
@@ -42,12 +47,14 @@
   # hardware.system76.enableAll = true;
   # services.desktopManager.cosmic.enable = true;
   # services.displayManager.cosmic-greeter.enable = true;
+
   # Configure X11 with DWM
   services.xserver = {
     windowManager.dwm.enable = true;
     xkb = {
       variant = "";
       layout = "us";
+      #      options = "altwin:ctrl_win";
     };
     enable = true;
     displayManager.startx.enable = true;
@@ -59,8 +66,6 @@
   };
 
   # AUDIO
-  # sound.enable = true;
-  hardware.pulseaudio.enable = false;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -85,11 +90,6 @@
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = ["electron-27.3.11"];
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  #  environment.systemPackages = with pkgs; [
-  #  ];
 
   # FONTS
   fonts.packages = with pkgs; [

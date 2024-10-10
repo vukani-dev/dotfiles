@@ -17,6 +17,7 @@
     ];
     colorschemes.onedark.enable = true;
     plugins = {
+      ledger.enable = true;
       conform-nvim = {
         enable = true;
         formatOnSave = {
