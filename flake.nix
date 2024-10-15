@@ -16,7 +16,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-hardware = {
-      url = "github:nixos/nixos-hardware/1e679b9a9970780cd5d4dfe755a74a8f96d33388";
+      url = "github:nixos/nixos-hardware";
       flake = false;
     };
     # nixos-cosmic = {

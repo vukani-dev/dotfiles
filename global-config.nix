@@ -125,6 +125,11 @@
 
   programs.dconf.enable = true;
   services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
   # services.logind.extraConfig = "HandleLidSwitch=ignore";
   # services.picom = {
   #   enable = true;

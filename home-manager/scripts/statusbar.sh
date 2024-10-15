@@ -8,7 +8,7 @@ dte () {
 
 
 bat () {
-    hostname=$(uname -n); if [ "$hostname" = "dala" ] || [ "$hostname" = "monk" ]; then BAT=BAT0; elif [ "$hostname" = "necessary" ]; then BAT=BAT1; else BAT="Unknown"; fi;
+    hostname=$(uname -n); if [ "$hostname" = "dala" ] || [ "$hostname" = "monk" ] || [ "$hostname" = "marga" ]; then BAT=BAT0; elif [ "$hostname" = "necessary" ]; then BAT=BAT1; else BAT="Unknown"; fi;
     CHARGE=$(cat /sys/class/power_supply/"$BAT"/capacity)
     STATUS=$(cat /sys/class/power_supply/"$BAT"/status)
 

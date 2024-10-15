@@ -1,5 +1,6 @@
 {pkgs, ...}: let
   apps = with pkgs; [
+    lshw
     keymapp
     qbittorrent
     arandr
