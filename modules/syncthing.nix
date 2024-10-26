@@ -3,6 +3,7 @@
     syncthing = {
       enable = true;
       user = "vukani";
+      relay.enable = false;
       dataDir = "/home/vukani/sync";
       configDir = "/home/vukani/.config/syncthing";
       overrideDevices = true; # overrides any devices added or deleted through the WebUI
