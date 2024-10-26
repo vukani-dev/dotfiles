@@ -11,6 +11,22 @@ edit = [
 play = [
 	{ run = 'mpv "$@"', orphan = true, for = "unix" },
 ]
-open = [
-	{ run = 'xdg-open "$@"', desc = "Open" },
+image = [
+    { run = 'feh "$@"', desc = "Open with feh" }
 ]
+pdf = [
+    { run = 'mupdf "$@"', desc = "Open with mupdf" }
+]
+
+[open]
+rules = [
+    # Images
+    { mime = "image/*", use = "image" },
+    
+    # PDFs
+    { mime = "application/pdf", use = "pdf" },
+    
+    # Fallback for other files
+    { name = "*", use = "xdg-open" }
+]
+

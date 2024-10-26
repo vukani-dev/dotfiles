@@ -1,5 +1,7 @@
 {pkgs, ...}: let
   apps = with pkgs; [
+    mupdf
+    thunderbird
     lshw
     keymapp
     qbittorrent
@@ -16,7 +18,6 @@
     bluetuith
     mpv
     logseq
-    betterbird
     wget
     yazi
     kitty

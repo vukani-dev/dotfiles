@@ -13,7 +13,6 @@
 
   boot.initrd.availableKernelModules = ["xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc"];
   boot.initrd.kernelModules = ["nvidia" "i915" "nvidia_modeset" "nvidia_uvm" "nvidia_drm"];
-  #  boot.kernelParams = ["module_blacklist=i915"];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
 
@@ -22,8 +21,7 @@
     options i915 force_probe=!9a60
   '';
 
-  #  services.xserver.videoDrivers = ["nvidia"];
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
   hardware.nvidia = {
     modesetting.enable = true;
   };

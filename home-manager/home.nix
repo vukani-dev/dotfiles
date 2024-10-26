@@ -15,9 +15,7 @@
     ./modules/git.nix
     ./modules/yazi/yazi.nix
     ./modules/carapace.nix
-    ./modules/nixvim
     ./modules/zoxide.nix
-    inputs.nixvim.homeManagerModules.nixvim
   ];
   home.username = username;
   home.homeDirectory = homeDirectory;

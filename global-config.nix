@@ -58,11 +58,12 @@
     };
     enable = true;
     displayManager.startx.enable = true;
-    libinput = {
+
+  };
+  services.libinput = {
       enable = true;
       mouse.naturalScrolling = true;
       touchpad.naturalScrolling = true;
-    };
   };
 
   # AUDIO
@@ -130,7 +131,7 @@
     nssmdns4 = true;
     openFirewall = true;
   };
-  # services.logind.extraConfig = "HandleLidSwitch=ignore";
+  services.logind.extraConfig = "HandleLidSwitch=ignore";
   # services.picom = {
   #   enable = true;
   #   inactiveOpacity = 0.8;

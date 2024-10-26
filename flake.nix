@@ -11,29 +11,38 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nix-hardware = {
       url = "github:nixos/nixos-hardware";
       flake = false;
     };
-    # nixos-cosmic = {
-    #   url = "github:lilyinstarlight/nixos-cosmic";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    nixvim-config = {
+      url = "github:vukani-dev/nixvim?ref=main";  
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    nix-hardware,
-    # nixos-cosmic,
-    ...
-  } @ inputs: let
+  outputs = { nixpkgs, nix-hardware, nixvim-config, ... } @ inputs: let
     lib = nixpkgs.lib;
     system = "x86_64-linux";
+    
+    # Create a common module for the nixvim configurations
+    nixvimModule = { pkgs, ... }: {
+      environment.systemPackages = [
+        nixvim-config.packages.${system}.default
+        (pkgs.writeShellScriptBin "nvim-rust" ''
+          ${nixvim-config.packages.${system}.rust}/bin/nvim "$@"
+        '')
+        (pkgs.writeShellScriptBin "nvim-python" ''
+          ${nixvim-config.packages.${system}.python}/bin/nvim "$@"
+        '')
+        (pkgs.writeShellScriptBin "nvim-web" ''
+          ${nixvim-config.packages.${system}.web}/bin/nvim "$@"
+        '')
+        (pkgs.writeShellScriptBin "nvim-iac" ''
+          ${nixvim-config.packages.${system}.iac}/bin/nvim "$@"
+        '')
+      ];
+    };
   in {
     nixosConfigurations = {
       marga = lib.nixosSystem {
@@ -43,6 +52,7 @@
         modules = [
           ./machines/marga
           (nix-hardware + /dell/precision/5560)
+          nixvimModule  
         ];
       };
       necessary = lib.nixosSystem {
@@ -52,6 +62,7 @@
         modules = [
           ./machines/necessary
           (nix-hardware + /microsoft/surface/surface-pro-intel)
+          nixvimModule  
         ];
       };
       dala = lib.nixosSystem {
@@ -59,14 +70,8 @@
           inherit inputs system;
         };
         modules = [
-          # {
-          #   nix.settings = {
-          #     substituters = ["https://cosmic.cachix.org/"];
-          #     trusted-public-keys = ["cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="];
-          #   };
-          # }
-          # nixos-cosmic.nixosModules.default
           ./machines/dala
+          nixvimModule  
         ];
       };
       monk = lib.nixosSystem {
@@ -76,6 +81,7 @@
         modules = [
           ./machines/monk
           (nix-hardware + /lenovo/thinkpad/x220)
+          nixvimModule 
         ];
       };
     };
