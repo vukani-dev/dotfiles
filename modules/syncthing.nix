@@ -1,9 +1,24 @@
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
+  systemd.services.syncthing = {
+    wantedBy = lib.mkForce []; # Force override the default target
+    wants = lib.mkForce []; # Force override additional auto-start triggers
+    after = ["network-online.target"];
+    serviceConfig = {
+      Restart = lib.mkForce "no"; # Force override restart behavior
+      RestartSec = lib.mkForce 0;
+      StartLimitInterval = lib.mkForce 0;
+      StartLimitBurst = lib.mkForce 0;
+    };
+  };
   services = {
     syncthing = {
       enable = true;
       user = "vukani";
-      relay.enable = false;
       dataDir = "/home/vukani/sync";
       configDir = "/home/vukani/.config/syncthing";
       overrideDevices = true; # overrides any devices added or deleted through the WebUI

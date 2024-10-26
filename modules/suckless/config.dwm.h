@@ -327,7 +327,7 @@ static const Key keys[] = {
     {MODKEY, XK_y, spawn, SHCMD("st -e yazi")},
     {MODKEY, XK_i, spawn, SHCMD("st -e nmtui")},
     {MODKEY, XK_q, spawn, SHCMD("st -e gotop")},
-    {MODKEY, XK_c, spawn, SHCMD("/home/vukani/scripts/toggle-syncthing.sh")},
+    {MODKEY, XK_c, spawn, SHCMD("st -e /home/vukani/scripts/toggle-syncthing.sh")},
     {MODKEY| ShiftMask, XK_s, spawn, SHCMD("flameshot launcher")},
     {MODKEY | ShiftMask, XK_m, spawn,
      SHCMD("/home/vukani/scripts/toggle-monitors.sh")},
