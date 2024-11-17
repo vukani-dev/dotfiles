@@ -46,5 +46,5 @@
     source = ./modules/firefox/includes;
     recursive = true;
   };
-  home.file."pictures/wallpapers/wall1.jpg".source = ./assets/wall1.jpg;
+  home.file."pictures/wallpapers/wall1.jpg".source = ./assets/wall3.jpg;
 }

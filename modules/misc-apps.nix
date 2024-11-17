@@ -1,5 +1,8 @@
 {pkgs, ...}: let
   apps = with pkgs; [
+    ranger
+    encfs
+    cryptsetup
     mupdf
     thunderbird
     lshw

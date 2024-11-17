@@ -6,5 +6,6 @@
     ../../modules/mullvad.nix
     ../../modules/gaming.nix
     ../../modules/media.nix
+    ../../modules/docker.nix
   ];
 }

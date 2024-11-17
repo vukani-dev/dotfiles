@@ -4,29 +4,3 @@ sort_by = "natural"
 sort_dir_first = true
 sort_reverse = false
 
-[opener]
-edit = [
-	{ run = 'nvim "$@"', block = true },
-]
-play = [
-	{ run = 'mpv "$@"', orphan = true, for = "unix" },
-]
-image = [
-    { run = 'feh "$@"', desc = "Open with feh" }
-]
-pdf = [
-    { run = 'mupdf "$@"', desc = "Open with mupdf" }
-]
-
-[open]
-rules = [
-    # Images
-    { mime = "image/*", use = "image" },
-    
-    # PDFs
-    { mime = "application/pdf", use = "pdf" },
-    
-    # Fallback for other files
-    { name = "*", use = "xdg-open" }
-]
-
