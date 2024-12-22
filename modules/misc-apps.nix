@@ -1,5 +1,7 @@
 {pkgs, ...}: let
   apps = with pkgs; [
+    floorp
+    tor-browser-bundle-bin
     ranger
     encfs
     cryptsetup
