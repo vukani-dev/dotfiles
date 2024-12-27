@@ -58,12 +58,11 @@
     };
     enable = true;
     displayManager.startx.enable = true;
-
   };
   services.libinput = {
-      enable = true;
-      mouse.naturalScrolling = true;
-      touchpad.naturalScrolling = true;
+    enable = true;
+    mouse.naturalScrolling = true;
+    touchpad.naturalScrolling = true;
   };
 
   # AUDIO
@@ -94,7 +93,7 @@
 
   # FONTS
   fonts.packages = with pkgs; [
-    nerdfonts
+    nerd-fonts.fira-code
     noto-fonts-cjk-sans
     noto-fonts-color-emoji
     noto-fonts-lgc-plus

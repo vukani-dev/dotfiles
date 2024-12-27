@@ -16,17 +16,25 @@
       flake = false;
     };
     nixvim-config = {
-      url = "github:vukani-dev/nixvim?ref=main";  
+      url = "github:vukani-dev/nixvim?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
     };
   };
 
-  outputs = { nixpkgs, nix-hardware, nixvim-config, ... } @ inputs: let
+  outputs = {
+    nixpkgs,
+    nix-hardware,
+    nixvim-config,
+    ghostty,
+    ...
+  } @ inputs: let
     lib = nixpkgs.lib;
     system = "x86_64-linux";
-    
-    # Create a common module for the nixvim configurations
-    nixvimModule = { pkgs, ... }: {
+
+    nixvimModule = {pkgs, ...}: {
       environment.systemPackages = [
         nixvim-config.packages.${system}.default
         (pkgs.writeShellScriptBin "nvim-rust" ''
@@ -43,6 +51,11 @@
         '')
       ];
     };
+    ghosttyModule = {...}: {
+      environment.systemPackages = [
+        ghostty.packages.${system}.default
+      ];
+    };
   in {
     nixosConfigurations = {
       marga = lib.nixosSystem {
@@ -52,7 +65,8 @@
         modules = [
           ./machines/marga
           (nix-hardware + /dell/precision/5560)
-          nixvimModule  
+          nixvimModule
+          ghosttyModule
         ];
       };
       necessary = lib.nixosSystem {
@@ -62,7 +76,7 @@
         modules = [
           ./machines/necessary
           (nix-hardware + /microsoft/surface/surface-pro-intel)
-          nixvimModule  
+          nixvimModule
         ];
       };
       dala = lib.nixosSystem {
@@ -71,7 +85,7 @@
         };
         modules = [
           ./machines/dala
-          nixvimModule  
+          nixvimModule
         ];
       };
       monk = lib.nixosSystem {
@@ -81,9 +95,10 @@
         modules = [
           ./machines/monk
           (nix-hardware + /lenovo/thinkpad/x220)
-          nixvimModule 
+          nixvimModule
         ];
       };
     };
   };
 }
+
