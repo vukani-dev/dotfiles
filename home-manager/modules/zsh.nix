@@ -11,7 +11,6 @@
       v = "nvim .";
       up = "nh os switch -u";
       rb = "nh os switch";
-      win = "xfreerdp /u:vukani /v:10.0.1.78 /sound /dynamic-resolution";
       lg = "lazygit";
     };
     history.size = 100000;

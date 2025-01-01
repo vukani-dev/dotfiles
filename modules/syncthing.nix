@@ -4,25 +4,14 @@
   lib,
   ...
 }: {
-  systemd.services.syncthing = {
-    wantedBy = lib.mkForce []; # Force override the default target
-    wants = lib.mkForce []; # Force override additional auto-start triggers
-    after = ["network-online.target"];
-    serviceConfig = {
-      Restart = lib.mkForce "no"; # Force override restart behavior
-      RestartSec = lib.mkForce 0;
-      StartLimitInterval = lib.mkForce 0;
-      StartLimitBurst = lib.mkForce 0;
-    };
-  };
   services = {
     syncthing = {
       enable = true;
       user = "vukani";
       dataDir = "/home/vukani/sync";
       configDir = "/home/vukani/.config/syncthing";
-      overrideDevices = true; # overrides any devices added or deleted through the WebUI
-      overrideFolders = false; # overrides any folders added or deleted through the WebUI
+      overrideDevices = true;
+      overrideFolders = false;
       settings = {
         devices = {
           "hub" = {id = "QAJ4HFL-AHT2J44-UXNS6NK-DXFVRYS-ZTCR5YP-TLZEBFO-FQXF7H2-PV63HAZ";};
@@ -46,6 +35,16 @@
           };
         };
       };
+    };
+  };
+  systemd.services.syncthing = {
+    wantedBy = lib.mkForce ["multi-user.target"];
+    wants = lib.mkForce ["network-online.target"];
+    after = lib.mkForce ["network-online.target"];
+    serviceConfig = {
+      Restart = lib.mkForce "always";
+      RestartSec = lib.mkForce 5;
+      StartLimitBurst = lib.mkForce 5;
     };
   };
 }

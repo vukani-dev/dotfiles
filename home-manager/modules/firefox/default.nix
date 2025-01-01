@@ -7,60 +7,6 @@
     enable = true;
     package = pkgs.firefox;
     profiles.vukani = {
-      bookmarks = [
-        {
-          name = "Ukuta";
-          url = "https://10.0.0.1:8080";
-        }
-        {
-          name = "Organizr - Media Fleet";
-          url = "http://10.0.6.13:8001";
-        }
-        {
-          name = "Soroveya";
-          url = "http://10.0.0.2:8006";
-        }
-        {
-          name = "Homelab Dash";
-          url = "http://10.0.0.5:3000";
-        }
-        {
-          name = "TrueNas";
-          url = "http://10.0.0.4";
-        }
-        {
-          name = "HAOs";
-          url = "http://10.0.0.3:8006";
-        }
-        {
-          name = "Home Assistant";
-          url = "http://10.0.0.250:8123";
-        }
-        {
-          name = "Syncthing - HUB";
-          url = "http://10.0.7.23:8384";
-        }
-        {
-          name = "Demselfly";
-          url = "http://10.0.7.23:6363";
-        }
-        {
-          name = "Music";
-          url = "https://music.binafsi.cloud";
-        }
-        {
-          name = "Chat GPT";
-          url = "https://chat.openai.com/";
-        }
-        {
-          name = "Cronometer";
-          url = "https://cronometer.com/";
-        }
-        {
-          name = "Njalla";
-          url = "https://njal.la/";
-        }
-      ];
       extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
         sponsorblock
         ublock-origin
@@ -88,8 +34,13 @@
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "extensions.formautofill.creditCards.enabled" = false;
         "browser.download.useDownloadDir" = false;
+
+        # Search engine settings for Startpage
+        "browser.search.defaultenginename" = "Startpage";
+        "browser.search.selectedEngine" = "Startpage";
+        "browser.urlbar.placeholderName" = "Startpage";
+        "browser.urlbar.placeholderName.private" = "Startpage";
       };
-      # userChrome = builtins.readFile ./userChrome.css;
     };
   };
 }

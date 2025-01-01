@@ -9,55 +9,60 @@
     ./modules/misc-apps.nix
   ];
 
-  nix.settings = {
-    experimental-features = ["nix-command" "flakes"];
-    auto-optimise-store = true;
-  };
-  hardware.keyboard.zsa.enable = true;
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-  services.nfs.server = {
-    enable = true;
-  };
-  networking.hosts = {
-    # "4.154.251.210" = ["test-tool.orangesmake-44ff8739.westus2.azurecontainerapps.io"];
+  # Core system configuration
+  nix = {
+    settings = {
+      experimental-features = ["nix-command" "flakes"];
+      auto-optimise-store = true;
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+    };
   };
 
-  services.trezord.enable = true;
+  # Hardware configuration
+  hardware = {
+    keyboard.zsa.enable = true;
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
+  };
 
-  # Set your time zone.
+  # Networking
+  networking = {
+    networkmanager.enable = true;
+    # hosts = {"x.x.x.x" = "test.io" };
+  };
+  services.nfs.server.enable = true;
+
+  # Localization and time
   time.timeZone = "America/New_York";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "en_US.UTF-8";
+      LC_IDENTIFICATION = "en_US.UTF-8";
+      LC_MEASUREMENT = "en_US.UTF-8";
+      LC_MONETARY = "en_US.UTF-8";
+      LC_NAME = "en_US.UTF-8";
+      LC_NUMERIC = "en_US.UTF-8";
+      LC_PAPER = "en_US.UTF-8";
+      LC_TELEPHONE = "en_US.UTF-8";
+      LC_TIME = "en_US.UTF-8";
+    };
   };
 
-  # hardware.system76.enableAll = true;
-  # services.desktopManager.cosmic.enable = true;
-  # services.displayManager.cosmic-greeter.enable = true;
-
-  # Configure X11 with DWM
+  # Display and input
   services.xserver = {
+    enable = true;
     windowManager.dwm.enable = true;
+    displayManager.startx.enable = true;
     xkb = {
       variant = "";
       layout = "us";
-      #      options = "altwin:ctrl_win";
     };
-    enable = true;
-    displayManager.startx.enable = true;
   };
   services.libinput = {
     enable = true;
@@ -65,33 +70,36 @@
     touchpad.naturalScrolling = true;
   };
 
-  # AUDIO
+  # Audio
   services.pipewire = {
     enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
+    alsa = {
+      enable = true;
+      support32Bit = true;
+    };
     pulse.enable = true;
-  };
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
   };
   services.blueman.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # User configuration
   programs.zsh.enable = true;
-  users.users.vukani = {
-    isNormalUser = true;
-    description = "vukani";
-    extraGroups = ["networkmanager" "wheel"];
-    shell = pkgs.zsh;
+  users = {
+    defaultUserShell = pkgs.zsh;
+    users.vukani = {
+      isNormalUser = true;
+      description = "vukani";
+      extraGroups = ["networkmanager" "wheel"];
+      shell = pkgs.zsh;
+    };
   };
-  users.defaultUserShell = pkgs.zsh;
 
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = ["electron-27.3.11"];
+  # Package management
+  nixpkgs.config = {
+    allowUnfree = true;
+    permittedInsecurePackages = ["electron-27.3.11"];
+  };
 
-  # FONTS
+  # Fonts
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
     noto-fonts-cjk-sans
@@ -100,13 +108,7 @@
     openmoji-color
   ];
 
-  # GARBAGE COLLECTION
-  nix.gc = {
-    automatic = true; # Enable the automatic garbage collector
-    dates = "weekly"; # When to run the garbage collector
-  };
-
-  # HOME MANAGER MODULE
+  # Home Manager
   home-manager = {
     extraSpecialArgs = {inherit inputs;};
     users = {
@@ -123,25 +125,18 @@
     };
   };
 
-  programs.dconf.enable = true;
-  services.printing.enable = true;
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
+  # Additional services
+  services = {
+    trezord.enable = true;
+    printing.enable = true;
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
   };
-  services.logind.extraConfig = "HandleLidSwitch=ignore";
-  # services.picom = {
-  #   enable = true;
-  #   inactiveOpacity = 0.8;
-  #   activeOpacity = 1.0;
-  #   opacityRules = [
-  #     "99:class_g = 'St' && focused"
-  #     "90:class_g = 'St' && !focused"
-  #     "98:class_g = 'firefox' && !focused"
-  #     "100:class_g = 'firefox' && focused"
-  #   ];
-  # };
+  programs.dconf.enable = true;
 
   system.stateVersion = "23.11";
 }
+

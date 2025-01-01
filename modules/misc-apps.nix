@@ -1,10 +1,7 @@
 {pkgs, ...}: let
   apps = with pkgs; [
-    floorp
-    tor-browser-bundle-bin
+    code-cursor
     ranger
-    encfs
-    cryptsetup
     mupdf
     thunderbird
     lshw
@@ -25,11 +22,10 @@
     logseq
     wget
     yazi
-    kitty
     git
+    xclip
     virt-viewer
     brave
-    vscodium
     alejandra
     pulsemixer
     discord

@@ -4,3 +4,39 @@ sort_by = "natural"
 sort_dir_first = true
 sort_reverse = false
 
+[opener]
+# mpv opener for videos and music
+mpv = [
+    { run = 'mpv "$@"', orphan = true, for = "unix" }
+]
+
+# feh opener for images
+feh = [
+    { run = 'feh "$@"', orphan = true, for = "unix" }
+]
+
+# mupdf opener for PDFs
+mupdf = [
+    { run = 'mupdf "$@"', orphan = true, for = "unix" }
+]
+
+# nvim opener for everything else
+nvim = [
+    { run = 'nvim "$@"', block = true, for = "unix" }
+]
+
+[open]
+# Override the default open rules completely:
+rules = [
+    # Videos
+    { mime = "video/*", use = "mpv" },
+    # Music (audio)
+    { mime = "audio/*", use = "mpv" },
+    # Images
+    { mime = "image/*", use = "feh" },
+    # PDFs
+    { mime = "application/pdf", use = "mupdf" },
+
+    # Catch-all fallback: open everything else in nvim
+    { name = "*", use = "nvim" },
+]

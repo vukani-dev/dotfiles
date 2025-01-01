@@ -42,9 +42,5 @@
   };
 
   home.file.".xinitrc".source = ./scripts/.xinitrc;
-  home.file.".mozilla/firefox/vukani/chrome/includes" = {
-    source = ./modules/firefox/includes;
-    recursive = true;
-  };
   home.file."pictures/wallpapers/wall1.jpg".source = ./assets/wall3.jpg;
 }
