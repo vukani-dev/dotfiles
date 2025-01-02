@@ -64,8 +64,8 @@
   # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
 
   # surface configs
-  microsoft-surface.ipts.enable = true;
-  microsoft-surface.surface-control.enable = true;
+  # microsoft-surface.ipts.enable = true;
+  # microsoft-surface.surface-control.enable = true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
