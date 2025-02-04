@@ -1,5 +1,7 @@
 {pkgs, ...}: let
   apps = with pkgs; [
+    moonlight-qt
+    android-tools
     code-cursor
     ranger
     mupdf

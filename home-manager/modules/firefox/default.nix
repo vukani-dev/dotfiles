@@ -11,9 +11,9 @@
         sponsorblock
         ublock-origin
         vimium
-        keepassxc-browser
         firefox-color
         metamask
+        bitwarden
       ];
 
       settings = {

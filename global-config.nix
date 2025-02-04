@@ -29,6 +29,8 @@
       powerOnBoot = true;
     };
   };
+  # Android USB
+  services.udev.packages = [pkgs.android-udev-rules];
 
   # Networking
   networking = {
@@ -88,7 +90,7 @@
     users.vukani = {
       isNormalUser = true;
       description = "vukani";
-      extraGroups = ["networkmanager" "wheel"];
+      extraGroups = ["networkmanager" "wheel" "adbusers"];
       shell = pkgs.zsh;
     };
   };
@@ -139,4 +141,3 @@
 
   system.stateVersion = "23.11";
 }
-

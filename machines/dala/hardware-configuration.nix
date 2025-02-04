@@ -34,7 +34,7 @@
   };
 
   fileSystems."/mnt/mwendo" = {
-    device = "//10.0.0.4/mwendo";
+    device = "//10.1.0.4/mwendo";
     fsType = "cifs";
     options = let
       automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
@@ -42,7 +42,7 @@
   };
 
   fileSystems."/mnt/music" = {
-    device = "//10.0.0.4/music";
+    device = "//10.1.0.4/music";
     fsType = "cifs";
     options = let
       automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
@@ -50,7 +50,7 @@
   };
 
   fileSystems."/mnt/jukwaa" = {
-    device = "//10.0.0.4/jukwaa";
+    device = "//10.1.0.4/jukwaa";
     fsType = "cifs";
     options = let
       automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
@@ -58,7 +58,7 @@
   };
 
   fileSystems."/mnt/photos" = {
-    device = "//10.0.0.4/photos";
+    device = "//10.1.0.4/photos";
     fsType = "cifs";
     options = let
       automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";

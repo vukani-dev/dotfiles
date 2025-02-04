@@ -7,6 +7,7 @@
 }: {
   imports = [
     ./modules/firefox
+    ./modules/qutebrowser.nix
     ./modules/zsh.nix
     ./modules/zellij.nix
     ./modules/starship.nix
