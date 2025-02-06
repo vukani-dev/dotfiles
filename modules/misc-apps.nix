@@ -1,5 +1,6 @@
 {pkgs, ...}: let
   apps = with pkgs; [
+    bitwarden
     maim
     hsetroot
     moonlight-qt

@@ -11,9 +11,9 @@
         sponsorblock
         ublock-origin
         vimium
-        firefox-color
         metamask
         bitwarden
+        startpage-private-search
       ];
 
       settings = {

@@ -1,39 +1,59 @@
-/* Import the default theme (for variables) */
-@import "chrome://browser/content/extension-mac.css";
+        /* Import the default theme (for variables) */
+        @import "chrome://browser/content/extension-mac.css";
 
-/* Main Toolbar */
-#navigator-toolbox {
-  background-color: #304D75 !important; /* Dark Blue */
-  color: #ffffff !important; /* White */
-}
+        /* Main Toolbar */
+        #navigator-toolbox {
+          background-color: #304D75 !important; /* Dark Blue */
+          color: #ffffff !important; /* White */
+        }
 
-/* Active Tab */
-#tabbrowser-tabs .tabbrowser-tab[selected="true"] {
-  background-color: #ff9e54 !important; /* Orange */
-  color: #282c34 !important; /* Dark Gray (for contrast) */
-}
+        /* Active Tab */
+        #tabbrowser-tabs .tabbrowser-tab[selected="true"] {
+            background-color: #ff9e54 !important; /* Orange */
+            color: #282c34 !important; /* Dark Gray (for contrast) */
+          }
 
-/* Inactive Tabs */
-#tabbrowser-tabs .tabbrowser-tab {
-  background-color: #282c34 !important; /* Dark Gray */
-  color: #ffffff !important; /* White */
-}
+        /* Inactive Tabs */
+        #tabbrowser-tabs .tabbrowser-tab {
+          background-color: #282c34 !important; /* Dark Gray */
+          color: #ffffff !important; /* White */
+        }
 
-/* URL Bar */
-#urlbar,
-#searchbar {
-  background-color: #282c34 !important;
-  color: #ffffff !important;
-  border: none !important;
-}
+        /* URL Bar */
+        #urlbar:not([focused="true"]) > #urlbar-input-container,
+        #searchbar:not([focused="true"]) {
+          background-color: #282c34 !important;
+          color: #ffffff !important;
+          border: none !important;
+        }
 
-/* Bookmarks Toolbar */
-#PersonalToolbar {
-  background-color: #304D75 !important;
-  color: #ffffff !important;
-}
+        #urlbar[focused="true"] > #urlbar-input-container,
+        #searchbar[focused="true"] {
+          background-color: #282c34 !important; /* Dark Gray - Keep consistent */
+          color: #ffffff !important; /* White - For visibility */
+        }
 
-/* Tab line */
-.tab-line {
-    background-color: #ff9e54 !important;
-}
+        /* URL Bar Dropdown */
+        #urlbar-results,
+        .searchbar-popup {
+          background-color: #282c34 !important; /* Dark Gray */
+          color: #ffffff !important; /* White */
+        }
+
+        /* URL Bar Dropdown - Selected Item */
+        #urlbar-results .urlbarView-row[selected="true"],
+        .searchbar-popup .search-panel-one-offs-item[selected="true"] {
+            background-color: #304D75 !important; /* Dark Blue */
+            color: #ffffff !important; /* White */
+        }
+
+        /* Bookmarks Toolbar */
+        #PersonalToolbar {
+          background-color: #304D75 !important;
+          color: #ffffff !important;
+        }
+
+        /* Tab line */
+        .tab-line {
+            background-color: #ff9e54 !important;
+        }
