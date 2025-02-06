@@ -1,0 +1,39 @@
+/* Import the default theme (for variables) */
+@import "chrome://browser/content/extension-mac.css";
+
+/* Main Toolbar */
+#navigator-toolbox {
+  background-color: #304D75 !important; /* Dark Blue */
+  color: #ffffff !important; /* White */
+}
+
+/* Active Tab */
+#tabbrowser-tabs .tabbrowser-tab[selected="true"] {
+  background-color: #ff9e54 !important; /* Orange */
+  color: #282c34 !important; /* Dark Gray (for contrast) */
+}
+
+/* Inactive Tabs */
+#tabbrowser-tabs .tabbrowser-tab {
+  background-color: #282c34 !important; /* Dark Gray */
+  color: #ffffff !important; /* White */
+}
+
+/* URL Bar */
+#urlbar,
+#searchbar {
+  background-color: #282c34 !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+/* Bookmarks Toolbar */
+#PersonalToolbar {
+  background-color: #304D75 !important;
+  color: #ffffff !important;
+}
+
+/* Tab line */
+.tab-line {
+    background-color: #ff9e54 !important;
+}

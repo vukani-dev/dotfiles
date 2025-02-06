@@ -30,7 +30,9 @@
         "font.name.sans-serif.x-western" = "FiraCode Nerd Font";
         "font.name.serif.x-western" = "FiraCode Nerd Font";
         "security.webauth.u2f" = true;
-        "signon.rememberSignons" = true;
+        "signon.rememberSignons" = false;
+        "browser.ctrlTab.recentlyUsedOrder" = true; 
+        "signon.autofillForms" = false;
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "extensions.formautofill.creditCards.enabled" = false;
         "browser.download.useDownloadDir" = false;
@@ -41,6 +43,7 @@
         "browser.urlbar.placeholderName" = "Startpage";
         "browser.urlbar.placeholderName.private" = "Startpage";
       };
+      userChrome = builtins.readFile ./userChrome.css;
     };
   };
 }
