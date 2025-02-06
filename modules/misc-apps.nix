@@ -1,5 +1,7 @@
 {pkgs, ...}: let
   apps = with pkgs; [
+    maim
+    hsetroot
     moonlight-qt
     android-tools
     code-cursor
@@ -41,7 +43,6 @@
     ueberzugpp
     lazygit
     feh
-    flameshot
     neofetch
     vim
     google-chrome

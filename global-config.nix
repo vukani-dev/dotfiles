@@ -8,7 +8,7 @@
     ./modules/suckless
     ./modules/misc-apps.nix
   ];
-  services.usbmuxd.enable = true;
+
   # Core system configuration
   nix = {
     settings = {
@@ -29,13 +29,15 @@
       powerOnBoot = true;
     };
   };
+
   # Android USB
   services.udev.packages = [pkgs.android-udev-rules];
+  services.usbmuxd.enable = true;
 
   # Networking
   networking = {
     networkmanager.enable = true;
-    # hosts = {"x.x.x.x" = "test.io" };
+    # hosts = {"x.x.x.x" = "test.io" };  # Consider enabling only if needed
   };
   services.nfs.server.enable = true;
 

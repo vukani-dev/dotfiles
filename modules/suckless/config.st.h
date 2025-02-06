@@ -7,7 +7,8 @@
  */
 static char *font = "FiraCode Nerd Font Mono:pixelsize=14:antialias=true:autohint=true";
 static char *font2[] =  {"Noto Fonts Emoji:pixelsize=14:antialias=true:autohint=true"};
-static int borderpx = 2;
+/* Border Pixel Size */
+static int border_px = 2;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -27,26 +28,26 @@ char *stty_args = "stty raw pass8 nl -echo -iexten -cstopb 38400";
 char *vtiden = "\033[?6c";
 
 /* Kerning / character bounding-box multipliers */
-static float cwscale = 1.0;
-static float chscale = 1.0;
+static float kerning_x = 1.0;
+static float kerning_y = 1.0;
 
 /*
  * word delimiter string
  *
  * More advanced example: L" `'\"()[]{}"
  */
-wchar_t *worddelimiters = L" ";
+wchar_t *word_delimiters = L" ";
 
 /* selection timeouts (in milliseconds) */
-static unsigned int doubleclicktimeout = 300;
-static unsigned int tripleclicktimeout = 600;
+static unsigned int double_click_timeout = 300;
+static unsigned int triple_click_timeout = 600;
 
 /* alt screens */
-int allowaltscreen = 1;
+int allow_alt_screen = 1;
 
 /* allow certain non-interactive (insecure) window operations such as:
    setting the clipboard text */
-int allowwindowops = 0;
+int allow_window_ops = 0;
 
 /*
  * draw latency range in ms - from new content/keypress/etc until drawing.
@@ -54,25 +55,25 @@ int allowwindowops = 0;
  * near minlatency, but it waits longer for slow updates to avoid partial draw.
  * low minlatency will tear/flicker more, as it can "detect" idle too early.
  */
-static double minlatency = 8;
-static double maxlatency = 33;
+static double min_latency = 8;
+static double max_latency = 33;
 
 /*
  * blinking timeout (set to 0 to disable blinking) for the terminal blinking
  * attribute.
  */
-static unsigned int blinktimeout = 800;
+static unsigned int blink_timeout = 800;
 
 /*
  * thickness of underline and bar cursors
  */
-static unsigned int cursorthickness = 2;
+static unsigned int cursor_thickness = 2;
 
 /*
  * bell volume. It must be a value between -100 and 100. Use 0 for disabling
  * it
  */
-static int bellvolume = 0;
+static int bell_volume = 0;
 
 /* default TERM value */
 char *termname = "st-256color";
@@ -99,33 +100,33 @@ float alpha = 1;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-        /* 8 normal colors */
-        "#282c34",
-        "#e06c75",
-        "#98c379",
-        "#e5c07b",
-        "#61afef",
-        "#c678dd",
-        "#56b6c2",
-        "#abb2bf",
+  /* 8 normal colors */
+  [0] = "#282c34", /* Black */
+  [1] = "#e06c75", /* Red */
+  [2] = "#98c379", /* Green */
+  [3] = "#e5c07b", /* Yellow */
+  [4] = "#61afef", /* Blue */
+  [5] = "#c678dd", /* Magenta */
+  [6] = "#56b6c2", /* Cyan */
+  [7] = "#abb2bf", /* White */
 
-        /* 8 bright colors */
-        "#929FBA",
-        "#e06c75",
-        "#98c379",
-        "#e5c07b",
-        "#61afef",
-        "#c678dd",
-        "#56b6c2",
-        "#abb2bf",
+  /* 8 bright colors */
+  [8]  = "#929FBA", /* Bright Black */
+  [9]  = "#e06c75", /* Bright Red */
+  [10] = "#98c379", /* Bright Green */
+  [11] = "#e5c07b", /* Bright Yellow */
+  [12] = "#61afef", /* Bright Blue */
+  [13] = "#c678dd", /* Bright Magenta */
+  [14] = "#56b6c2", /* Bright Cyan */
+  [15] = "#abb2bf", /* Bright White */
 
-        [255] = 0,
+  [255] = 0,
 
-        /* more colors can be added after 255 to use with DefaultXX */
-        "#cccccc",
-        "#555555",
-        "#ffffff", /* default foreground colour */
-        "#282c34", /* default background colour */
+  /* more colors can be added after 255 to use with DefaultXX */
+  [256] = "#cccccc", /* cursor */
+  [257] = "#555555", /* reverse cursor */
+  [258] = "#ffffff", /* default foreground colour */
+  [259] = "#282c34", /* default background colour */
 };
 
 
@@ -201,21 +202,35 @@ static MouseShortcut mshortcuts[] = {
 #define TERMMOD (ControlMask|ShiftMask)
 
 static Shortcut shortcuts[] = {
-	/* mask                 keysym          function        argument */
-	{ XK_ANY_MOD,           XK_Break,       sendbreak,      {.i =  0} },
-	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
-	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
-	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
-	{ TERMMOD,              XK_Page_Up,       zoom,           {.f = +1} },
-	{ TERMMOD,              XK_Page_Down,        zoom,           {.f = -1} },
-	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
-	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
-	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
-	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
-	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
-	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
-	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+  /* mask                 keysym          function        argument */
+  // Break
+  { XK_ANY_MOD,           XK_Break,       sendbreak,      {.i =  0} },
+  // Toggle application cursor and keypad mode on/off
+  { ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
+  // Print Screen
+  { ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
+  // Print Selection
+  { XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
+  // Zoom in
+  { TERMMOD,              XK_Page_Up,     zoom,           {.f = +1} },
+  // Zoom out
+  { TERMMOD,              XK_Page_Down,   zoom,           {.f = -1} },
+  // Reset Zoom
+  { TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
+  // Copy to clipboard
+  { TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
+  // Paste from clipboard
+  { TERMMOD,              XK_V,           clippaste,      {.i =  0} },
+  // Paste from selection
+  { TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
+  // Paste from selection
+  { ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
+  // Toggle numlock
+  { TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
+  // Scroll Up
+  { ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
+  // Scroll Down
+  { ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
 };
 
 /*
@@ -437,53 +452,4 @@ static Key key[] = {
 	{ XK_F11, /* F23 */ ShiftMask,      "\033[23;2~",    0,    0},
 	{ XK_F11, /* F35 */ ControlMask,    "\033[23;5~",    0,    0},
 	{ XK_F11, /* F47 */ Mod4Mask,       "\033[23;6~",    0,    0},
-	{ XK_F11, /* F59 */ Mod1Mask,       "\033[23;3~",    0,    0},
-	{ XK_F12,           XK_NO_MOD,      "\033[24~",      0,    0},
-	{ XK_F12, /* F24 */ ShiftMask,      "\033[24;2~",    0,    0},
-	{ XK_F12, /* F36 */ ControlMask,    "\033[24;5~",    0,    0},
-	{ XK_F12, /* F48 */ Mod4Mask,       "\033[24;6~",    0,    0},
-	{ XK_F12, /* F60 */ Mod1Mask,       "\033[24;3~",    0,    0},
-	{ XK_F13,           XK_NO_MOD,      "\033[1;2P",     0,    0},
-	{ XK_F14,           XK_NO_MOD,      "\033[1;2Q",     0,    0},
-	{ XK_F15,           XK_NO_MOD,      "\033[1;2R",     0,    0},
-	{ XK_F16,           XK_NO_MOD,      "\033[1;2S",     0,    0},
-	{ XK_F17,           XK_NO_MOD,      "\033[15;2~",    0,    0},
-	{ XK_F18,           XK_NO_MOD,      "\033[17;2~",    0,    0},
-	{ XK_F19,           XK_NO_MOD,      "\033[18;2~",    0,    0},
-	{ XK_F20,           XK_NO_MOD,      "\033[19;2~",    0,    0},
-	{ XK_F21,           XK_NO_MOD,      "\033[20;2~",    0,    0},
-	{ XK_F22,           XK_NO_MOD,      "\033[21;2~",    0,    0},
-	{ XK_F23,           XK_NO_MOD,      "\033[23;2~",    0,    0},
-	{ XK_F24,           XK_NO_MOD,      "\033[24;2~",    0,    0},
-	{ XK_F25,           XK_NO_MOD,      "\033[1;5P",     0,    0},
-	{ XK_F26,           XK_NO_MOD,      "\033[1;5Q",     0,    0},
-	{ XK_F27,           XK_NO_MOD,      "\033[1;5R",     0,    0},
-	{ XK_F28,           XK_NO_MOD,      "\033[1;5S",     0,    0},
-	{ XK_F29,           XK_NO_MOD,      "\033[15;5~",    0,    0},
-	{ XK_F30,           XK_NO_MOD,      "\033[17;5~",    0,    0},
-	{ XK_F31,           XK_NO_MOD,      "\033[18;5~",    0,    0},
-	{ XK_F32,           XK_NO_MOD,      "\033[19;5~",    0,    0},
-	{ XK_F33,           XK_NO_MOD,      "\033[20;5~",    0,    0},
-	{ XK_F34,           XK_NO_MOD,      "\033[21;5~",    0,    0},
-	{ XK_F35,           XK_NO_MOD,      "\033[23;5~",    0,    0},
-};
-
-/*
- * Selection types' masks.
- * Use the same masks as usual.
- * Button1Mask is always unset, to make masks match between ButtonPress.
- * ButtonRelease and MotionNotify.
- * If no match is found, regular selection is used.
- */
-static uint selmasks[] = {
-	[SEL_RECTANGULAR] = Mod1Mask,
-};
-
-/*
- * Printable characters in ASCII, used to estimate the advance width
- * of single wide characters.
- */
-static char ascii_printable[] =
-	" !\"#$%&'()*+,-./0123456789:;<=>?"
-	"@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_"
-	"`abcdefghijklmnopqrstuvwxyz{|}~";
+	{ XK_F11, /* F59 */ Mod1Mask,       "\033[23;3~",    0,

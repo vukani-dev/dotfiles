@@ -5,7 +5,7 @@ RESOLUTION=1280x720
 hostname=$(uname -n);
 
 if  [ "$hostname" = "marga" ]; then extern=DP-3; fi;
-if  [ "$hostname" = "marga" ]; then RESOLUTION=2560x1600; 
+if  [ "$hostname" = "marga" ]; then RESOLUTION=3840x2560; 
 elif [ "$hostname" = "necessary" ]; then RESOLUTION=2496x1664;
 elif [ "$hostname" = "dala" ]; then RESOLUTION=1920x1080; 
 else RESOLUTION=1280x720; fi;
