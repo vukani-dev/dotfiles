@@ -49,22 +49,6 @@
     options = ["fmask=0077" "dmask=0077"];
   };
 
-  fileSystems."/mnt/mwendo" = {
-    device = "//10.1.0.4/mwendo";
-    fsType = "cifs";
-    options = let
-      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
-    in ["${automount_opts},credentials=/etc/nixos/smb-service"];
-  };
-
-  fileSystems."/mnt/music" = {
-    device = "//10.1.0.4/music";
-    fsType = "cifs";
-    options = let
-      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
-    in ["${automount_opts},credentials=/etc/nixos/smb-service"];
-  };
-
   fileSystems."/mnt/jukwaa" = {
     device = "//10.1.0.4/jukwaa";
     fsType = "cifs";
@@ -73,13 +57,6 @@
     in ["${automount_opts},credentials=/etc/nixos/smb-service"];
   };
 
-  fileSystems."/mnt/photos" = {
-    device = "//10.1.0.4/photos";
-    fsType = "cifs";
-    options = let
-      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
-    in ["${automount_opts},credentials=/etc/nixos/smb-service"];
-  };
   fileSystems."/mnt/storage" = {
     device = "10.1.0.40:/mnt/storage";
     fsType = "nfs";
