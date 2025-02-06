@@ -8,7 +8,7 @@
     ./modules/suckless
     ./modules/misc-apps.nix
   ];
-
+  services.usbmuxd.enable = true;
   # Core system configuration
   nix = {
     settings = {
@@ -90,7 +90,7 @@
     users.vukani = {
       isNormalUser = true;
       description = "vukani";
-      extraGroups = ["networkmanager" "wheel" "adbusers"];
+      extraGroups = ["networkmanager" "wheel" "adbusers" "plugdev"];
       shell = pkgs.zsh;
     };
   };

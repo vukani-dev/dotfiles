@@ -7,7 +7,6 @@
 }: {
   imports = [
     ./modules/firefox
-    ./modules/qutebrowser.nix
     ./modules/zsh.nix
     ./modules/zellij.nix
     ./modules/starship.nix
@@ -27,7 +26,6 @@
     FLAKEREF = "/home/vukani/.dotfiles";
     SHELL = "zsh";
     TERM = "st";
-    LEDGER_FILE = "/home/vukani/documents/accounting/book.ledger";
   };
 
   home.sessionPath = [
@@ -43,5 +41,5 @@
   };
 
   home.file.".xinitrc".source = ./scripts/.xinitrc;
-  home.file."pictures/wallpapers/wall1.jpg".source = ./assets/wall3.jpg;
+  home.file."pictures/wallpapers/wall1.jpg".source = ./assets/flowers.jpg;
 }
