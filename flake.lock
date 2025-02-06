@@ -415,17 +415,17 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1738815006,
-        "narHash": "sha256-CThMpJNPVslvrJofG2z76jX6zIu1Xjs5ehsm0UWJz4k=",
+        "lastModified": 1738859263,
+        "narHash": "sha256-PsQdfeEBnaikoATg6PpKk+Eveq3FLtN3QE4qntMx6zI=",
         "owner": "vukani-dev",
         "repo": "nixvim",
-        "rev": "706e1e31f661decf9950fd6349bd5e81079752ef",
+        "rev": "79331ee9646ef2016b7d1ff08c852d23ec17a48c",
         "type": "github"
       },
       "original": {
         "owner": "vukani-dev",
-        "ref": "main",
         "repo": "nixvim",
+        "rev": "79331ee9646ef2016b7d1ff08c852d23ec17a48c",
         "type": "github"
       }
     },

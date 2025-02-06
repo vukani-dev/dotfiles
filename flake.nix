@@ -16,7 +16,7 @@
       flake = false;
     };
     nixvim-config = {
-      url = "github:vukani-dev/nixvim?ref=main";
+      url = "github:vukani-dev/nixvim?rev=79331ee9646ef2016b7d1ff08c852d23ec17a48c";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ghostty = {
@@ -101,4 +101,3 @@
     };
   };
 }
-
