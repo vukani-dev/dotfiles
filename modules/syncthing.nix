@@ -14,24 +14,16 @@
       overrideFolders = false;
       settings = {
         devices = {
-          "hub" = {id = "QAJ4HFL-AHT2J44-UXNS6NK-DXFVRYS-ZTCR5YP-TLZEBFO-FQXF7H2-PV63HAZ";};
+          "syncthing-hub" = {id = "E7QKE6I-ARNJZDG-E4G2IER-PGKX5JU-GFFMYDH-ZL6RZEL-JRPIWB3-RR5MDQR";};
         };
         folders = {
-          "mpwsh-st49m" = {
+          "kmqkd-7ziwr" = {
             path = "/home/vukani/documents";
-            devices = ["hub"];
+            devices = ["syncthing-hub"];
           };
-          "q5cwn-5surh" = {
+          "twqcj-6uefd" = {
             path = "/home/vukani/logseq";
-            devices = ["hub"];
-          };
-          "kgjmx-ylimg" = {
-            path = "/home/vukani/keys";
-            devices = ["hub"];
-          };
-          "b3d5a-grf2q" = {
-            path = "/home/vukani/ebooks";
-            devices = ["hub"];
+            devices = ["syncthing-hub"];
           };
         };
       };
