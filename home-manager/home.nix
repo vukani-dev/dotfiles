@@ -6,7 +6,7 @@
   ...
 }: {
   imports = [
-    ./modules/firefox
+    # ./modules/firefox
     ./modules/librewolf.nix
     ./modules/zsh.nix
     ./modules/zellij.nix
