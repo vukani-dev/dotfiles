@@ -266,11 +266,11 @@ static char dmenumon[2] =
 static const char *dmenucmd[] = {"/home/vukani/scripts/launcher", NULL};
 static const char *roficmd[] = {"/home/vukani/scripts/launcher", NULL};
 static const char *termcmd[] = {"st", NULL};
-static const char *browsercmd[] = {"firefox", NULL};
+static const char *browsercmd[] = {"librewolf", NULL};
 static const char *discordcmd[] = {"discord", NULL};
 static const char *emailcmd[] = {"thunderbird", NULL};
-static const char *codiumcmd[] = {"codium", NULL};
-static const char *keepasscmd[] = {"keepassxc", NULL};
+static const char *codiumcmd[] = {"cursor", NULL};
+static const char *keepasscmd[] = {"bitwarden", NULL};
 static const char *logseqcmd[] = {"logseq", NULL};
 
 
