@@ -5,7 +5,6 @@
     hsetroot
     moonlight-qt
     android-tools
-    code-cursor
     ranger
     mupdf
     thunderbird
@@ -24,7 +23,6 @@
     keepassxc
     bluetuith
     mpv
-    logseq
     wget
     yazi
     git

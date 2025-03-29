@@ -7,16 +7,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nix-hardware = {
       url = "github:nixos/nixos-hardware";
       flake = false;
     };
     nixvim-config = {
-      url = "github:vukani-dev/nixvim?rev=79331ee9646ef2016b7d1ff08c852d23ec17a48c";
+      url = "github:vukani-dev/nixvim?rev=f49cb4a8774f7d7feb2cf24359096ef3b0e55ee7";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ghostty = {
