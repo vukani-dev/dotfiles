@@ -114,6 +114,7 @@
 
   # Home Manager
   home-manager = {
+    backupFileExtension = "old";
     extraSpecialArgs = {inherit inputs;};
     users = {
       vukani = import ./home-manager/home.nix {

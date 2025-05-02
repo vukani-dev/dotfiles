@@ -3,6 +3,6 @@
     ./hardware-configuration.nix
     ../../global-config.nix
     # ../../modules/syncthing.nix
-    ../../modules/mullvad.nix
+    # ../../modules/mullvad.nix
   ];
 }
