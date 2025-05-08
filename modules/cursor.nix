@@ -1,19 +1,20 @@
-{ pkgs, lib, ... }:
-
-let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   # --- User Configuration ---
   # Update these values if the URL/version changes
   # Note: The URL provided seems to contain a hash, which might change even for the same version.
   # You might need to find a more stable download link pattern if possible, or update the URL and hash frequently.
-  cursorVersion = "0.47.9"; # Version from the URL
-  cursorUrl = "https://downloads.cursor.com/production/b6fb41b5f36bda05cab7109606e7404a65d1ff32/linux/x64/Cursor-${cursorVersion}-x86_64.AppImage";
+  cursorVersion = "0.48.6";
+  cursorUrl = "https://downloads.cursor.com/production/0781e811de386a0c5bcb07ceb259df8ff8246a52/linux/x64/Cursor-0.49.6-x86_64.AppImage";
 
   # Get the sha256 hash by running:
   # nix-prefetch-url <cursorUrl>
   # Example:
   # nix-prefetch-url https://downloads.cursor.com/production/b6fb41b5f36bda05cab7109606e7404a65d1ff32/linux/x64/Cursor-0.47.9-x86_64.AppImage
-  cursorSha256 = "1xxi46l59ismz2il9z3ym5rz8bf2wfp95rxahs1w8fz6c464wiig"; # Replace with the actual SHA256 hash
-
+  cursorSha256 = "132bhv64xhl391aa0c5cdiy7h5ljw529dk0wr53689hm1mkkyzjq"; # Replace with the actual SHA256 hash
 in {
   # Define the package derivation
   environment.systemPackages = let
@@ -80,10 +81,11 @@ in {
         homepage = "https://cursor.sh/";
         # License needs verification - likely proprietary or custom
         license = licenses.unfree;
-        sourceProvenance = [ sourceTypes.binaryNativeCode ];
+        sourceProvenance = [sourceTypes.binaryNativeCode];
         platforms = platforms.linux;
-        maintainers = [ maintainers.vukani ]; # Or your GitHub handle/name
+        maintainers = [maintainers.vukani]; # Or your GitHub handle/name
       };
     };
-  in [ cursor-appimage ]; # Add the package to systemPackages
-} 
+  in [cursor-appimage]; # Add the package to systemPackages
+}
+

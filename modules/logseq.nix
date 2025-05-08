@@ -2,17 +2,16 @@
 
 let
   # --- User Configuration ---
-  # Update these values when a new Logseq version is released
-  logseqVersion = "0.10.9"; # Replace with the desired Logseq version tag
   # Get the sha256 hash by running:
+  logseqVersion = "0.10.10-alpha+nightly.20250508";
   # nix-prefetch-url https://github.com/logseq/logseq/releases/download/<version>/Logseq-linux-x64-<version>.AppImage
   # Example for 0.10.9:
   # nix-prefetch-url https://github.com/logseq/logseq/releases/download/0.10.9/Logseq-linux-x64-0.10.9.AppImage
-  logseqSha256 = "0rqa3wzs6sgsc34alm4pyy5ckqhymqvbykam5fpp2ak5ciisw4sx"; # Replace with the actual SHA256 hash from nix-prefetch-url
+  logseqSha256 = "0wsz8rwcpc59qld29npqzzy6yp965kvl1dm9zagdz0c4w3kjljw5"; # Replace with the actual SHA256 hash from nix-prefetch-url
 
   # --- Derivation ---
-  logseqUrl = "https://github.com/logseq/logseq/releases/download/${logseqVersion}/Logseq-linux-x64-${logseqVersion}.AppImage";
-
+  # Fix URL to match the actual version specified
+  logseqUrl = "https://github.com/logseq/logseq/releases/download/nightly/Logseq-linux-x64-${logseqVersion}.AppImage";
   logseq-appimage = pkgs.stdenv.mkDerivation {
     pname = "logseq-appimage";
     version = logseqVersion;
