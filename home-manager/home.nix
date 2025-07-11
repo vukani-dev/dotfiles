@@ -23,6 +23,7 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     FLAKE = "/home/vukani/.dotfiles";
+    NH_FLAKE = "/home/vukani/.dotfiles";
     FLAKEREF = "/home/vukani/.dotfiles";
     SHELL = "zsh";
     TERM = "st";

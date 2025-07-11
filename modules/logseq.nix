@@ -1,17 +1,19 @@
-{ pkgs, lib, ... }:
-
-let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   # --- User Configuration ---
   # Get the sha256 hash by running:
-  logseqVersion = "0.10.10-alpha+nightly.20250508";
+  logseqVersion = "0.10.12";
   # nix-prefetch-url https://github.com/logseq/logseq/releases/download/<version>/Logseq-linux-x64-<version>.AppImage
   # Example for 0.10.9:
   # nix-prefetch-url https://github.com/logseq/logseq/releases/download/0.10.9/Logseq-linux-x64-0.10.9.AppImage
-  logseqSha256 = "0wsz8rwcpc59qld29npqzzy6yp965kvl1dm9zagdz0c4w3kjljw5"; # Replace with the actual SHA256 hash from nix-prefetch-url
+  logseqSha256 = "137p6kv6v6aicynddvzq6jm4aaqy826dn7f1y3igsvgzfi2a3i9b"; # Replace with the actual SHA256 hash from nix-prefetch-url
 
   # --- Derivation ---
   # Fix URL to match the actual version specified
-  logseqUrl = "https://github.com/logseq/logseq/releases/download/nightly/Logseq-linux-x64-${logseqVersion}.AppImage";
+  logseqUrl = "https://github.com/logseq/logseq/releases/download/${logseqVersion}/Logseq-linux-x64-${logseqVersion}.AppImage";
   logseq-appimage = pkgs.stdenv.mkDerivation {
     pname = "logseq-appimage";
     version = logseqVersion;
@@ -74,13 +76,13 @@ let
       '';
       homepage = "https://logseq.com/";
       license = licenses.agpl3Only; # Please verify Logseq's current license
-      sourceProvenance = [ sourceTypes.binaryNativeCode ];
+      sourceProvenance = [sourceTypes.binaryNativeCode];
       platforms = platforms.linux;
-      maintainers = [ maintainers.vukani ]; # Or your GitHub handle/name
+      maintainers = [maintainers.vukani]; # Or your GitHub handle/name
     };
   };
-
 in {
   # Add the logseq package to the system environment
-  environment.systemPackages = [ logseq-appimage ];
-} 
+  environment.systemPackages = [logseq-appimage];
+}
+

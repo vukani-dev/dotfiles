@@ -1,5 +1,8 @@
 {pkgs, ...}: let
   apps = with pkgs; [
+    claude-code
+    vdhcoapp
+    python313Packages.yt-dlp
     bitwarden
     maim
     hsetroot

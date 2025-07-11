@@ -15,16 +15,15 @@
       url = "github:vukani-dev/nixvim?rev=f49cb4a8774f7d7feb2cf24359096ef3b0e55ee7";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-    };
+    # ghostty = {
+    #   url = "github:ghostty-org/ghostty";
+    # };
   };
 
   outputs = {
     nixpkgs,
     nix-hardware,
     nixvim-config,
-    ghostty,
     ...
   } @ inputs: let
     lib = nixpkgs.lib;
@@ -47,11 +46,11 @@
         '')
       ];
     };
-    ghosttyModule = {...}: {
-      environment.systemPackages = [
-        ghostty.packages.${system}.default
-      ];
-    };
+    # ghosttyModule = {...}: {
+    #   environment.systemPackages = [
+    #     ghostty.packages.${system}.default
+    #   ];
+    # };
   in {
     nixosConfigurations = {
       marga = lib.nixosSystem {
@@ -62,7 +61,6 @@
           ./machines/marga
           (nix-hardware + /dell/precision/5560)
           nixvimModule
-          ghosttyModule
         ];
       };
       necessary = lib.nixosSystem {
