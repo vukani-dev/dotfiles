@@ -265,7 +265,7 @@ static char dmenumon[2] =
     "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = {"/home/vukani/scripts/launcher", NULL};
 static const char *roficmd[] = {"/home/vukani/scripts/launcher", NULL};
-static const char *termcmd[] = {"st", NULL};
+static const char *termcmd[] = {"ghostty", NULL};
 static const char *browsercmd[] = {"librewolf", NULL};
 static const char *discordcmd[] = {"discord", NULL};
 static const char *emailcmd[] = {"thunderbird", NULL};

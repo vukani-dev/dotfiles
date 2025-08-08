@@ -122,6 +122,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-bleeding": {
+      "locked": {
+        "lastModified": 1754498491,
+        "narHash": "sha256-erbiH2agUTD0Z30xcVSFcDHzkRvkRXOQ3lb887bcVrs=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "c2ae88e026f9525daf89587f3cbee584b92b6134",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixvim": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -153,17 +169,17 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1743208809,
-        "narHash": "sha256-TJdt/h5Z2/GBlCTjV7H8mGMinKjGrzEAiP3LMmCxdro=",
+        "lastModified": 1752240729,
+        "narHash": "sha256-bKeMM5JrupCf/+EoVbl+j/UTJpbfpIOZUk2ktSpVWI8=",
         "owner": "vukani-dev",
         "repo": "nixvim",
-        "rev": "f49cb4a8774f7d7feb2cf24359096ef3b0e55ee7",
+        "rev": "87d482b752a1c2430e49604e01e8a0ef3aa1f9c0",
         "type": "github"
       },
       "original": {
         "owner": "vukani-dev",
         "repo": "nixvim",
-        "rev": "f49cb4a8774f7d7feb2cf24359096ef3b0e55ee7",
+        "rev": "87d482b752a1c2430e49604e01e8a0ef3aa1f9c0",
         "type": "github"
       }
     },
@@ -196,6 +212,7 @@
         "home-manager": "home-manager",
         "nix-hardware": "nix-hardware",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-bleeding": "nixpkgs-bleeding",
         "nixvim-config": "nixvim-config"
       }
     },

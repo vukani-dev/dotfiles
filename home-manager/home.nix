@@ -16,6 +16,7 @@
     ./modules/yazi/yazi.nix
     ./modules/carapace.nix
     ./modules/zoxide.nix
+    ./modules/ghostty.nix
   ];
   home.username = username;
   home.homeDirectory = homeDirectory;

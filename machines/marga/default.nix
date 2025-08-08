@@ -8,6 +8,5 @@
     ../../modules/media.nix
     ../../modules/docker.nix
     ../../modules/logseq.nix
-    ../../modules/cursor.nix
   ];
 }

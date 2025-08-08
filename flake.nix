@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs-bleeding.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -12,22 +13,40 @@
       flake = false;
     };
     nixvim-config = {
-      url = "github:vukani-dev/nixvim?rev=f49cb4a8774f7d7feb2cf24359096ef3b0e55ee7";
+      url = "github:vukani-dev/nixvim?rev=87d482b752a1c2430e49604e01e8a0ef3aa1f9c0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # ghostty = {
-    #   url = "github:ghostty-org/ghostty";
-    # };
   };
 
   outputs = {
     nixpkgs,
+    nixpkgs-bleeding,
     nix-hardware,
     nixvim-config,
     ...
   } @ inputs: let
     lib = nixpkgs.lib;
     system = "x86_64-linux";
+
+    bleedingEdgePackages = [
+      "claude-code"
+      "code-cursor-fhs"
+    ];
+
+    pkgs-bleeding = import nixpkgs-bleeding {
+      inherit system;
+      config.allowUnfree = true;
+    };
+
+    overlays = [
+      (
+        final: prev:
+          lib.genAttrs bleedingEdgePackages (
+            name:
+              pkgs-bleeding.${name}
+          )
+      )
+    ];
 
     nixvimModule = {pkgs, ...}: {
       environment.systemPackages = [
@@ -46,11 +65,6 @@
         '')
       ];
     };
-    # ghosttyModule = {...}: {
-    #   environment.systemPackages = [
-    #     ghostty.packages.${system}.default
-    #   ];
-    # };
   in {
     nixosConfigurations = {
       marga = lib.nixosSystem {
@@ -61,6 +75,7 @@
           ./machines/marga
           (nix-hardware + /dell/precision/5560)
           nixvimModule
+          {nixpkgs.overlays = overlays;}
         ];
       };
       necessary = lib.nixosSystem {
@@ -71,6 +86,7 @@
           ./machines/necessary
           (nix-hardware + /microsoft/surface/surface-pro-intel)
           nixvimModule
+          {nixpkgs.overlays = overlays;}
         ];
       };
       dala = lib.nixosSystem {
@@ -80,6 +96,7 @@
         modules = [
           ./machines/dala
           nixvimModule
+          {nixpkgs.overlays = overlays;}
         ];
       };
       monk = lib.nixosSystem {
@@ -90,6 +107,7 @@
           ./machines/monk
           (nix-hardware + /lenovo/thinkpad/x220)
           nixvimModule
+          {nixpkgs.overlays = overlays;}
         ];
       };
     };

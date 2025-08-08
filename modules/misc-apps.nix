@@ -1,5 +1,7 @@
 {pkgs, ...}: let
   apps = with pkgs; [
+    code-cursor-fhs
+    ghostty
     claude-code
     vdhcoapp
     python313Packages.yt-dlp

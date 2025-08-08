@@ -32,6 +32,8 @@ rules = [
     { mime = "video/*", use = "mpv" },
     # Music (audio)
     { mime = "audio/*", use = "mpv" },
+    # TypeScript files (.ts)
+    { name = "*.ts", use = "mpv" },
     # Images
     { mime = "image/*", use = "feh" },
     # PDFs
