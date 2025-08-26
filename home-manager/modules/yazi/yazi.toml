@@ -20,6 +20,11 @@ mupdf = [
     { run = 'mupdf "$@"', orphan = true, for = "unix" }
 ]
 
+# LibreOffice Calc for spreadsheets
+libreoffice-calc = [
+    { run = 'libreoffice --calc "$@"', orphan = true, for = "unix" }
+]
+
 # nvim opener for everything else
 nvim = [
     { run = 'nvim "$@"', block = true, for = "unix" }
@@ -38,6 +43,10 @@ rules = [
     { mime = "image/*", use = "feh" },
     # PDFs
     { mime = "application/pdf", use = "mupdf" },
+    # Spreadsheets
+    { name = "*.ods", use = "libreoffice-calc" },
+    { name = "*.xlsx", use = "libreoffice-calc" },
+    { name = "*.xls", use = "libreoffice-calc" },
 
     # Catch-all fallback: open everything else in nvim
     { name = "*", use = "nvim" },

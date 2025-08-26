@@ -9,6 +9,9 @@
     # macOS only, safe to leave commented on Linux:
     # macos-titlebar-style = hidden
 
+    # Disable close confirmation
+    confirm-close-surface = false
+
     # Colors
     background = #282c34
     foreground = #ffffff
