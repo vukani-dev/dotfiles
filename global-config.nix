@@ -16,12 +16,21 @@
       auto-optimise-store = true;
       substituters = ["https://claude-code.cachix.org"];
       trusted-public-keys = ["claude-code.cachix.org-1:YeXf2aNu7UTX8Vwrze0za1WEDS+4DuI2kVeWEE4fsRk="];
+      # Build performance
+      max-jobs = "auto";
+      cores = 0; # Use all cores per job
+      keep-outputs = true;
+      keep-derivations = true;
     };
     gc = {
       automatic = true;
       dates = "weekly";
+      options = "--delete-older-than 14d";
     };
   };
+
+  # Limit boot entries to prevent /boot filling up
+  boot.loader.systemd-boot.configurationLimit = 10;
 
   # Hardware configuration
   hardware = {
@@ -101,7 +110,6 @@
   # Package management
   nixpkgs.config = {
     allowUnfree = true;
-    permittedInsecurePackages = ["electron-27.3.11"];
   };
 
   # Fonts
@@ -140,6 +148,17 @@
       nssmdns4 = true;
       openFirewall = true;
     };
+    fstrim.enable = true; # SSD maintenance
+    earlyoom = {
+      enable = true;
+      freeMemThreshold = 5; # Prevent OOM freezes
+    };
+  };
+
+  # Memory optimization
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
   };
   programs.dconf.enable = true;
 

@@ -1,13 +1,13 @@
 {pkgs, ...}: let
   apps = with pkgs; [
     luanti
-    outfox
   ];
 in {
   programs.steam = {
     enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
   };
+  programs.gamemode.enable = true; # Run games with: gamemoderun %command%
   environment.systemPackages = apps;
 }

@@ -1,7 +1,9 @@
 {
   programs.git = {
     enable = true;
-    userEmail = "vukani@posteo.net";
-    userName = "vukani-dev";
+    settings.user = {
+      email = "vukani@posteo.net";
+      name = "vukani-dev";
+    };
   };
 }

@@ -42,8 +42,7 @@
         "type": "github"
       }
     },
-    "nix-hardware": {
-      "flake": false,
+    "nixos-hardware": {
       "locked": {
         "lastModified": 1767185284,
         "narHash": "sha256-ljDBUDpD1Cg5n3mJI81Hz5qeZAwCGxon4kQW3Ho3+6Q=",
@@ -121,24 +120,23 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1767967122,
-        "narHash": "sha256-34zCZreDXa3dVN+QaEziYvGI+TKPYuUypBEuA7gjbHo=",
+        "lastModified": 1767981991,
+        "narHash": "sha256-h6Sd5Wy4X9qpz56sFOuM7r/Uc1/R0lttj1/isLW4eVE=",
         "owner": "vukani-dev",
         "repo": "nixvim",
-        "rev": "ebe34c1f445cc49504be6fa6a99808613e0bb512",
+        "rev": "58d595b56e263719d0b9b6efc027a13b6f45fa5e",
         "type": "github"
       },
       "original": {
         "owner": "vukani-dev",
         "repo": "nixvim",
-        "rev": "ebe34c1f445cc49504be6fa6a99808613e0bb512",
         "type": "github"
       }
     },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nix-hardware": "nix-hardware",
+        "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-bleeding": "nixpkgs-bleeding",
         "nixvim-config": "nixvim-config"

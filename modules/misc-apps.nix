@@ -1,61 +1,85 @@
 {pkgs, ...}: let
   apps = with pkgs; [
-    gemini-cli
-    codex
-    parsec-bin
-    lzip
-    ffmpeg
-    host
-    code-cursor-fhs
-    ghostty
+    # AI & Dev tools
     claude-code
-    vdhcoapp
-    python313Packages.yt-dlp
-    bitwarden-desktop
-    maim
-    hsetroot
-    moonlight-qt
-    android-tools
-    ranger
-    mupdf
-    thunderbird
-    lshw
-    keymapp
-    qbittorrent
-    arandr
-    trezor-suite
-    trezor-udev-rules
-    gotop
+    codex
+    gemini-cli
+    lazygit
+    alejandra
+    git
+
+    # Terminals & Shells
+    ghostty
+    st
+
+    # Editors
+    vim
+
+    # Browsers
+    brave
+    google-chrome
+
+    # Media
+    ffmpeg
+    mpv
     cmus
+    feh
+    python313Packages.yt-dlp
+    vdhcoapp
+
+    # Documents & Office
+    mupdf
+    libreoffice
+    thunderbird
+
+    # File management
+    yazi
+    ueberzugpp
+
+    # System utilities
+    fastfetch
+    htop
+    gotop
+    lshw
+    wget
+    host
+    lzip
     nfs-utils
     nh
-    freerdp
-    libreoffice
-    keepassxc
-    bluetuith
-    mpv
-    wget
-    yazi
-    git
+
+    # X11 utilities
     xclip
-    virt-viewer
-    brave
-    alejandra
-    pulsemixer
-    discord
     xorg.xev
+    arandr
+    maim
+    hsetroot
+    brightnessctl
+    dmenu
     slock
     xautolock
-    st
-    dmenu
-    brightnessctl
-    htop
-    ueberzugpp
-    lazygit
-    feh
-    neofetch
-    vim
-    google-chrome
+
+    # Remote & Networking
+    freerdp
+    moonlight-qt
+    parsec-bin
+    virt-viewer
+
+    # Communication
+    discord
+
+    # Security & Privacy
+    bitwarden-desktop
+    keepassxc
+    trezor-suite
+    trezor-udev-rules
+
+    # Hardware
+    keymapp
+    bluetuith
+    android-tools
+
+    # Downloads
+    qbittorrent
   ];
 in {
   environment.systemPackages = apps;

@@ -8,12 +8,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-hardware = {
-      url = "github:nixos/nixos-hardware";
-      flake = false;
-    };
+    nixos-hardware.url = "github:nixos/nixos-hardware";
     nixvim-config = {
-      url = "github:vukani-dev/nixvim?rev=ebe34c1f445cc49504be6fa6a99808613e0bb512";
+      url = "github:vukani-dev/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -21,7 +18,7 @@
   outputs = {
     nixpkgs,
     nixpkgs-bleeding,
-    nix-hardware,
+    nixos-hardware,
     nixvim-config,
     ...
   } @ inputs: let
@@ -30,7 +27,6 @@
 
     bleedingEdgePackages = [
       "claude-code"
-      "code-cursor-fhs"
       "codex"
     ];
 
@@ -62,7 +58,7 @@
         };
         modules = [
           ./machines/marga
-          (nix-hardware + /dell/precision/5560)
+          nixos-hardware.nixosModules.dell-precision-5560
           nixvimModule
           {nixpkgs.overlays = overlays;}
         ];
@@ -73,7 +69,7 @@
         };
         modules = [
           ./machines/necessary
-          (nix-hardware + /microsoft/surface/surface-pro-intel)
+          nixos-hardware.nixosModules.microsoft-surface-pro-intel
           nixvimModule
           {nixpkgs.overlays = overlays;}
         ];
@@ -94,7 +90,7 @@
         };
         modules = [
           ./machines/monk
-          (nix-hardware + /lenovo/thinkpad/x220)
+          nixos-hardware.nixosModules.lenovo-thinkpad-x220
           nixvimModule
           {nixpkgs.overlays = overlays;}
         ];

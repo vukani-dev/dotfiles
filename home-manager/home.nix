@@ -23,15 +23,15 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    FLAKE = "/home/vukani/.dotfiles";
-    NH_FLAKE = "/home/vukani/.dotfiles";
-    FLAKEREF = "/home/vukani/.dotfiles";
+    FLAKE = "${homeDirectory}/.dotfiles";
+    NH_FLAKE = "${homeDirectory}/.dotfiles";
+    FLAKEREF = "${homeDirectory}/.dotfiles";
     SHELL = "zsh";
     TERM = "st";
   };
 
   home.sessionPath = [
-    "/home/vukani/scripts/"
+    "${homeDirectory}/scripts/"
   ];
 
   home.stateVersion = "23.11";

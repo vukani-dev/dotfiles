@@ -15,13 +15,14 @@
       lg = "lazygit";
       win-gaming = "xfreerdp /v:10.5.18.177 /u:vukani /size:1920x1080";
     };
-    history.size = 100000;
-    history.path = "/home/vukani/.config/zsh/history";
-    initContent = "setopt HIST_IGNORE_SPACE";
-    oh-my-zsh = {
-      enable = true;
-      plugins = ["git" "vi-mode"];
-      theme = "robbyrussell";
+    history = {
+      size = 100000;
+      ignoreSpace = true;
     };
+    initContent = ''
+      # Vi mode
+      bindkey -v
+      export KEYTIMEOUT=1
+    '';
   };
 }

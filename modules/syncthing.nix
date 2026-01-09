@@ -18,10 +18,12 @@
         };
         folders = {
           "kmqkd-7ziwr" = {
+            # Documents folder
             path = "/home/vukani/documents";
             devices = ["syncthing-hub"];
           };
           "twqcj-6uefd" = {
+            # Logseq notes
             path = "/home/vukani/logseq";
             devices = ["syncthing-hub"];
           };
