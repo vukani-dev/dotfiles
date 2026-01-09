@@ -33,7 +33,6 @@
   };
 
   # Android USB
-  services.udev.packages = [pkgs.android-udev-rules];
   services.usbmuxd.enable = true;
 
   # Networking

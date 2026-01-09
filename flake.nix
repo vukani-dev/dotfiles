@@ -13,7 +13,7 @@
       flake = false;
     };
     nixvim-config = {
-      url = "github:vukani-dev/nixvim?rev=87d482b752a1c2430e49604e01e8a0ef3aa1f9c0";
+      url = "github:vukani-dev/nixvim?rev=ebe34c1f445cc49504be6fa6a99808613e0bb512";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -31,6 +31,7 @@
     bleedingEdgePackages = [
       "claude-code"
       "code-cursor-fhs"
+      "codex"
     ];
 
     pkgs-bleeding = import nixpkgs-bleeding {
@@ -51,18 +52,6 @@
     nixvimModule = {pkgs, ...}: {
       environment.systemPackages = [
         nixvim-config.packages.${system}.default
-        (pkgs.writeShellScriptBin "nvim-rust" ''
-          ${nixvim-config.packages.${system}.rust}/bin/nvim "$@"
-        '')
-        (pkgs.writeShellScriptBin "nvim-python" ''
-          ${nixvim-config.packages.${system}.python}/bin/nvim "$@"
-        '')
-        (pkgs.writeShellScriptBin "nvim-web" ''
-          ${nixvim-config.packages.${system}.web}/bin/nvim "$@"
-        '')
-        (pkgs.writeShellScriptBin "nvim-iac" ''
-          ${nixvim-config.packages.${system}.iac}/bin/nvim "$@"
-        '')
       ];
     };
   in {

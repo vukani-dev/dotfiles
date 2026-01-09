@@ -1,11 +1,17 @@
 {pkgs, ...}: let
   apps = with pkgs; [
+    gemini-cli
+    codex
+    parsec-bin
+    lzip
+    ffmpeg
+    host
     code-cursor-fhs
     ghostty
     claude-code
     vdhcoapp
     python313Packages.yt-dlp
-    bitwarden
+    bitwarden-desktop
     maim
     hsetroot
     moonlight-qt

@@ -13,7 +13,7 @@
       rb = "nh os switch /home/vukani/.dotfiles/";
       bup = "nix flake update nixpkgs-bleeding --flake /home/vukani/.dotfiles/";
       lg = "lazygit";
-      win-gaming = "xfreerdp /v:10.1.0.77 /u:vukani /size:1920x1080";
+      win-gaming = "xfreerdp /v:10.5.18.177 /u:vukani /size:1920x1080";
     };
     history.size = 100000;
     history.path = "/home/vukani/.config/zsh/history";

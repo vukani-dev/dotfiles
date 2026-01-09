@@ -1,7 +1,6 @@
 {pkgs, ...}: let
   apps = with pkgs; [
-    steamcontroller
-    minetest
+    luanti
     outfox
   ];
 in {
