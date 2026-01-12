@@ -6,5 +6,6 @@
     ../../modules/mullvad.nix
     ../../modules/media.nix
     ../../modules/logseq.nix
+    ../../modules/displays/dala.nix
   ];
 }

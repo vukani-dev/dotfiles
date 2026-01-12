@@ -7,5 +7,6 @@
     ../../modules/gaming.nix
     ../../modules/docker.nix
     ../../modules/logseq.nix
+    ../../modules/displays/necessary.nix
   ];
 }

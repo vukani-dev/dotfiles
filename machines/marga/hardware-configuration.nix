@@ -24,6 +24,8 @@
   hardware.graphics.enable = true;
   hardware.nvidia = {
     modesetting.enable = true;
+    powerManagement.enable = true; # Fixes suspend/resume - preserves VRAM
+    powerManagement.finegrained = false; # Don't use fine-grained power management (can cause issues)
   };
   hardware.nvidia.prime = {
     offload = {

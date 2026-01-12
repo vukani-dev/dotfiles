@@ -162,5 +162,14 @@
   };
   programs.dconf.enable = true;
 
+  # Power management / sleep
+  services.logind.settings.Login = {
+    HandleLidSwitch = "suspend";
+    HandleLidSwitchExternalPower = "ignore"; # Don't suspend when plugged in with lid closed
+    HandlePowerKey = "suspend";
+  };
+  # Ensure proper resume from suspend
+  powerManagement.enable = true;
+
   system.stateVersion = "23.11";
 }

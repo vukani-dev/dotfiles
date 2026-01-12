@@ -5,49 +5,38 @@ sort_dir_first = true
 sort_reverse = false
 
 [opener]
-# mpv opener for videos and music
 mpv = [
-    { run = 'mpv "$@"', orphan = true, for = "unix" }
+    { run = 'mpv %s', orphan = true, for = "unix" }
 ]
-
-# feh opener for images
 feh = [
-    { run = 'feh "$@"', orphan = true, for = "unix" }
+    { run = 'feh %s', orphan = true, for = "unix" }
 ]
-
-# mupdf opener for PDFs
 mupdf = [
-    { run = 'mupdf "$@"', orphan = true, for = "unix" }
+    { run = 'mupdf %s', orphan = true, for = "unix" }
 ]
-
-# LibreOffice Calc for spreadsheets
 libreoffice-calc = [
-    { run = 'libreoffice --calc "$@"', orphan = true, for = "unix" }
+    { run = 'libreoffice --calc %s', orphan = true, for = "unix" }
 ]
-
-# nvim opener for everything else
 nvim = [
-    { run = 'nvim "$@"', block = true, for = "unix" }
+    { run = '$EDITOR %s', block = true, for = "unix" }
 ]
 
 [open]
-# Override the default open rules completely:
 rules = [
     # Videos
     { mime = "video/*", use = "mpv" },
-    # Music (audio)
+    # Audio
     { mime = "audio/*", use = "mpv" },
-    # TypeScript files (.ts)
-    { name = "*.ts", use = "mpv" },
     # Images
     { mime = "image/*", use = "feh" },
     # PDFs
     { mime = "application/pdf", use = "mupdf" },
     # Spreadsheets
-    { name = "*.ods", use = "libreoffice-calc" },
-    { name = "*.xlsx", use = "libreoffice-calc" },
-    { name = "*.xls", use = "libreoffice-calc" },
-
-    # Catch-all fallback: open everything else in nvim
-    { name = "*", use = "nvim" },
+    { url = "*.ods", use = "libreoffice-calc" },
+    { url = "*.xlsx", use = "libreoffice-calc" },
+    { url = "*.xls", use = "libreoffice-calc" },
+    # Text/code - open in editor
+    { mime = "text/*", use = "nvim" },
+    # Fallback
+    { url = "*", use = "nvim" },
 ]
