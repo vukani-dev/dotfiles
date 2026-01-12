@@ -8,5 +8,6 @@
     ../../modules/media.nix
     ../../modules/docker.nix
     ../../modules/logseq.nix
+    ../../modules/displays/marga.nix
   ];
 }

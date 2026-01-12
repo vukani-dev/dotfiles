@@ -263,13 +263,12 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] =
     "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = {"/home/vukani/scripts/launcher", NULL};
+static const char *dmenucmd[] = {"/home/vukani/scripts/launcher", NULL}; // required by dwm.c
 static const char *roficmd[] = {"/home/vukani/scripts/launcher", NULL};
 static const char *termcmd[] = {"ghostty", NULL};
 static const char *browsercmd[] = {"librewolf", NULL};
 static const char *discordcmd[] = {"discord", NULL};
 static const char *emailcmd[] = {"thunderbird", NULL};
-static const char *codiumcmd[] = {"cursor", NULL};
 static const char *keepasscmd[] = {"bitwarden", NULL};
 static const char *logseqcmd[] = {"logseq", NULL};
 
@@ -355,7 +354,8 @@ static const Key keys[] = {
     {MODKEY, XK_grave, togglescratch, {.ui = 0}},
     {MODKEY | ControlMask, XK_grave, setscratch, {.ui = 0}},
     {MODKEY | ShiftMask, XK_grave, removescratch, {.ui = 0}},
-    {MODKEY, XK_y, togglefullscreen, {0}},
+    // fullscreen moved - was conflicting with yazi on XK_y
+    {MODKEY | ShiftMask, XK_f, togglefullscreen, {0}},
     {MODKEY, XK_0, view, {.ui = ~SPTAGMASK}},
     {MODKEY | ShiftMask, XK_0, tag, {.ui = ~SPTAGMASK}},
     {MODKEY, XK_comma, focusmon, {.i = -1}},
