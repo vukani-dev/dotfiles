@@ -24,6 +24,7 @@
     mpv
     cmus
     feh
+    pulsemixer
     python313Packages.yt-dlp
     vdhcoapp
 

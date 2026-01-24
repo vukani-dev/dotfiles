@@ -1,0 +1,139 @@
+/* Waybar - Doom One Theme */
+
+* {
+    font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", monospace;
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: rgba(40, 44, 52, 0.95);
+    color: #bbc2cf;
+    border-bottom: 2px solid #304D75;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/* Workspaces */
+#workspaces {
+    margin: 0 4px;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    color: #5b6268;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    min-width: 30px;
+}
+
+#workspaces button:hover {
+    background: rgba(48, 77, 117, 0.4);
+    color: #bbc2cf;
+}
+
+#workspaces button.active {
+    color: #ff9e54;
+    font-weight: bold;
+    background: rgba(255, 158, 84, 0.15);
+    border-bottom: 2px solid #ff9e54;
+}
+
+#workspaces button.urgent {
+    background: #ff6c6b;
+    color: #282c34;
+}
+
+/* Window title */
+#window {
+    color: #bbc2cf;
+    padding: 0 10px;
+}
+
+/* Right modules */
+#tray,
+#pulseaudio,
+#network,
+#battery,
+#clock {
+    padding: 0 10px;
+    margin: 0 2px;
+    color: #bbc2cf;
+}
+
+#tray {
+    background: transparent;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background: #ff6c6b;
+}
+
+/* Pulseaudio */
+#pulseaudio {
+    color: #98be65;
+}
+
+#pulseaudio.muted {
+    color: #5b6268;
+}
+
+/* Network */
+#network {
+    color: #51afef;
+}
+
+#network.disconnected {
+    color: #ff6c6b;
+}
+
+/* Battery */
+#battery {
+    color: #98be65;
+}
+
+#battery.charging {
+    color: #98be65;
+}
+
+#battery.warning:not(.charging) {
+    color: #ECBE7B;
+}
+
+#battery.critical:not(.charging) {
+    background: #ff6c6b;
+    color: #282c34;
+    animation: blink 0.5s linear infinite alternate;
+}
+
+@keyframes blink {
+    to {
+        background: #282c34;
+        color: #ff6c6b;
+    }
+}
+
+/* Clock */
+#clock {
+    color: #ff9e54;
+    font-weight: bold;
+}
+
+/* Tooltip */
+tooltip {
+    background: #282c34;
+    border: 1px solid #304D75;
+    border-radius: 0;
+}
+
+tooltip label {
+    color: #bbc2cf;
+}

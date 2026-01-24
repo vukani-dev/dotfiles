@@ -21,6 +21,7 @@
       cores = 0; # Use all cores per job
       keep-outputs = true;
       keep-derivations = true;
+      warn-dirty = false; # Suppress "Git tree is dirty" warnings
     };
     gc = {
       automatic = true;
@@ -85,6 +86,7 @@
   };
 
   # Audio
+  security.rtkit.enable = true; # Real-time scheduling for audio
   services.pipewire = {
     enable = true;
     alsa = {
@@ -92,6 +94,7 @@
       support32Bit = true;
     };
     pulse.enable = true;
+    wireplumber.enable = true;
   };
   services.blueman.enable = true;
 
@@ -102,7 +105,7 @@
     users.vukani = {
       isNormalUser = true;
       description = "vukani";
-      extraGroups = ["networkmanager" "wheel" "adbusers" "plugdev"];
+      extraGroups = ["networkmanager" "wheel" "adbusers" "plugdev" "audio" "video"];
       shell = pkgs.zsh;
     };
   };
@@ -161,6 +164,8 @@
     algorithm = "zstd";
   };
   programs.dconf.enable = true;
+  programs.direnv.enable = true; # Auto-load project environments
+  services.fwupd.enable = true; # Firmware updates
 
   # Power management / sleep
   services.logind.settings.Login = {

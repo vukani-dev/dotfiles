@@ -9,5 +9,6 @@
     ../../modules/docker.nix
     ../../modules/logseq.nix
     ../../modules/displays/marga.nix
+    ../../modules/greetd.nix # TUI login manager
   ];
 }

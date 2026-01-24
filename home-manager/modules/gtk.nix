@@ -2,7 +2,7 @@
   gtk = {
     enable = true;
     theme = {
-      name = "pop-gtk-theme";
+      name = "Pop-dark";
       package = pkgs.pop-gtk-theme;
     };
   };
