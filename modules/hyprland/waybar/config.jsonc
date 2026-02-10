@@ -42,12 +42,8 @@
 
     "clock": {
         "format": "{:%a %b %d  %H:%M}",
-        "tooltip-format": "<tt>{calendar}</tt>",
-        "calendar": {
-            "format": {
-                "today": "<span color='#ff9e54'><b>{}</b></span>"
-            }
-        }
+        "tooltip-format": "{:%A, %B %d %Y}",
+        "on-click": "ghostty -e calcurse"
     },
 
     "battery": {

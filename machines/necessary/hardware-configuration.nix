@@ -18,6 +18,23 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Fix Tiger Lake i915 s2idle wake failure (screen stays black after suspend)
+  boot.kernelParams = [
+    "i915.enable_psr=0"       # Disable Panel Self Refresh — causes wake hangs on TGL
+    "i915.enable_dc=1"        # Keep display C-states but limit to DC5 (DC6 can hang)
+    "iwlwifi.power_save=0"    # Prevent WiFi from blocking wake
+  ];
+
+  boot.kernelPatches = [
+    {
+      name = "disable-kernel-rust";
+      patch = null;
+      extraConfig = ''
+        RUST n
+      '';
+    }
+  ];
+
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/9e9cc9e1-c6d0-48e5-aa00-5077bf8de5e2";
     fsType = "ext4";

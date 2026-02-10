@@ -18,6 +18,7 @@
     # Browsers
     brave
     google-chrome
+    mullvad-browser
 
     # Media
     ffmpeg
@@ -32,6 +33,7 @@
     mupdf
     libreoffice
     thunderbird
+    calcurse
 
     # File management
     yazi

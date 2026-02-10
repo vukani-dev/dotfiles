@@ -6,7 +6,8 @@
   ...
 }: {
   imports = [
-    ./modules/librewolf.nix
+    ./modules/firefox.nix
+    ./modules/zen-browser.nix
     ./modules/zsh.nix
     ./modules/zellij.nix
     ./modules/starship.nix
@@ -17,17 +18,16 @@
     ./modules/carapace.nix
     ./modules/zoxide.nix
     ./modules/ghostty.nix
+    ./modules/hyprland.nix
   ];
   home.username = username;
   home.homeDirectory = homeDirectory;
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    FLAKE = "${homeDirectory}/.dotfiles";
     NH_FLAKE = "${homeDirectory}/.dotfiles";
-    FLAKEREF = "${homeDirectory}/.dotfiles";
     SHELL = "zsh";
-    TERM = "st";
+    TERM = "ghostty";
   };
 
   home.sessionPath = [
@@ -41,6 +41,8 @@
     source = ./scripts;
     recursive = true;
   };
+
+  xdg.configFile."calcurse/conf".source = ./modules/calcurse.conf;
 
   home.file.".xinitrc".source = ./scripts/.xinitrc;
   home.file."pictures/wallpapers/wall1.jpg".source = ./assets/flowers.jpg;

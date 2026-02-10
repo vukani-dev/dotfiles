@@ -1,8 +1,8 @@
 /* Waybar - Doom One Theme */
 
 * {
-    font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", monospace;
-    font-size: 14px;
+    font-family: "FiraCode Nerd Font Mono", "Font Awesome 6 Free", monospace;
+    font-size: 16px;
     min-height: 0;
 }
 
@@ -127,13 +127,16 @@ window#waybar.hidden {
     font-weight: bold;
 }
 
-/* Tooltip */
+/* Tooltip / Calendar */
 tooltip {
     background: #282c34;
     border: 1px solid #304D75;
-    border-radius: 0;
+    border-radius: 8px;
+    padding: 0;
 }
 
 tooltip label {
     color: #bbc2cf;
+    padding: 8px 12px;
+    font-family: "FiraCode Nerd Font Mono", monospace;
 }

@@ -9,11 +9,10 @@
       ll = "ls -l";
       la = "ls -a";
       v = "nvim .";
-      up = "nh os switch /home/vukani/.dotfiles/ -u";
-      rb = "nh os switch /home/vukani/.dotfiles/";
+      up = "nh os switch /home/vukani/.dotfiles/ -H $(hostname) -u";
+      rb = "nh os switch /home/vukani/.dotfiles/ -H $(hostname)";
       bup = "nix flake update nixpkgs-bleeding --flake /home/vukani/.dotfiles/";
       lg = "lazygit";
-      win-gaming = "xfreerdp /v:10.5.18.177 /u:vukani /size:1920x1080";
     };
     history = {
       size = 100000;

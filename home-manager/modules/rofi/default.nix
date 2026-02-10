@@ -4,6 +4,8 @@
   };
   programs.rofi = {
     enable = true;
+    package = pkgs.rofi;
+    plugins = [pkgs.rofi-calc pkgs.rofi-emoji];
 
     extraConfig = {
       bw = 1;
@@ -11,10 +13,5 @@
     };
 
     theme = "./style/launcher.rasi";
-    # home.file."scripts/rofi/launcher".source = ./bin/launcher;
-
-    package = pkgs.rofi.override {
-      plugins = [pkgs.rofi-calc pkgs.rofi-emoji];
-    };
   };
 }

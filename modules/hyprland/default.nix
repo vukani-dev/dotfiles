@@ -14,7 +14,7 @@
   environment.systemPackages = with pkgs; [
     # Core
     waybar # Status bar
-    wofi # App launcher (wayland-native)
+    # wofi replaced by rofi-wayland (configured in home-manager)
     hyprpaper # Wallpaper
     hypridle # Idle daemon
     hyprlock # Lock screen
@@ -31,11 +31,6 @@
     networkmanagerapplet # nm-applet for systray
     brightnessctl # Screen brightness (used by hypridle)
     jq # JSON parsing (used by transparency toggle)
-  ];
-
-  # Font for waybar
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
   ];
 
   # XDG portal for screen sharing, file dialogs
@@ -69,9 +64,4 @@
     Type=Application
   '';
 
-  # NVIDIA environment variables (safe for both X11 and Wayland)
-  environment.sessionVariables = {
-    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-    LIBVA_DRIVER_NAME = "nvidia";
-  };
 }
