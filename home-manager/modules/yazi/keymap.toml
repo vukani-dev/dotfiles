@@ -20,5 +20,5 @@ run  = 'cd /home/vukani/.dotfiles'
 
 [[mgr.prepend_keymap]]
 on   = "W"
-run  = 'shell "set-wallpaper.sh %h &" --confirm'
+run  = 'shell --orphan -- set-wallpaper.sh %h'
 desc = "Set as wallpaper"
