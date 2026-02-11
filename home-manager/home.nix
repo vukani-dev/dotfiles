@@ -44,6 +44,27 @@
 
   xdg.configFile."calcurse/conf".source = ./modules/calcurse.conf;
 
+  # Daily wallpaper rotation
+  systemd.user.services.daily-wallpaper = {
+    Unit.Description = "Set daily wallpaper";
+    Service = {
+      Type = "oneshot";
+      ExecStart = "${homeDirectory}/scripts/set-wallpaper.sh";
+      Environment = "PATH=/run/current-system/sw/bin:${homeDirectory}/scripts";
+    };
+  };
+  systemd.user.timers.daily-wallpaper = {
+    Unit.Description = "Daily wallpaper rotation";
+    Timer = {
+      OnCalendar = "daily";
+      Persistent = true;
+    };
+    Install.WantedBy = ["timers.target"];
+  };
+
   home.file.".xinitrc".source = ./scripts/.xinitrc;
-  home.file."pictures/wallpapers/wall1.jpg".source = ./assets/flowers.jpg;
+  home.file."pictures/wallpapers" = {
+    source = ./assets;
+    recursive = true;
+  };
 }

@@ -21,6 +21,7 @@
     mullvad-browser
 
     # Media
+    imagemagick
     ffmpeg
     mpv
     cmus

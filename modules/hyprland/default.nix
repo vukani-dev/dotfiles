@@ -15,7 +15,7 @@
     # Core
     waybar # Status bar
     # wofi replaced by rofi-wayland (configured in home-manager)
-    hyprpaper # Wallpaper
+    swaybg # Wallpaper
     hypridle # Idle daemon
     hyprlock # Lock screen
 
