@@ -1,6 +1,7 @@
 # Hyprland configuration module
 {
   pkgs,
+  lib,
   config,
   ...
 }: {
@@ -31,6 +32,7 @@
     networkmanagerapplet # nm-applet for systray
     brightnessctl # Screen brightness (used by hypridle)
     jq # JSON parsing (used by transparency toggle)
+    kanshi # Auto monitor switching
   ];
 
   # XDG portal for screen sharing, file dialogs
@@ -54,14 +56,10 @@
   # Session entries for greetd
   services.displayManager.sessionPackages = [pkgs.hyprland];
 
-  # Create dwm X session entry for greetd
-  # This uses startx to properly initialize X with .xinitrc
-  environment.etc."greetd/sessions/dwm.desktop".text = ''
-    [Desktop Entry]
-    Name=dwm
-    Comment=Dynamic Window Manager (via startx)
-    Exec=startx
-    Type=Application
+  # Default monitor config — machines can override via their display module
+  environment.etc."hypr/monitors.conf".text = lib.mkDefault ''
+    monitor = eDP-1, preferred, 0x0, 1
+    monitor = , preferred, auto, 1
   '';
 
 }

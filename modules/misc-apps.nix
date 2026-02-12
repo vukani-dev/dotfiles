@@ -69,7 +69,7 @@
     virt-viewer
 
     # Communication
-    discord
+    vesktop
 
     # Security & Privacy
     bitwarden-desktop

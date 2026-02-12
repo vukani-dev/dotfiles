@@ -32,6 +32,7 @@
     bleedingEdgePackages = [
       "claude-code"
       "codex"
+      "vesktop"
     ];
 
     pkgs-bleeding = import nixpkgs-bleeding {

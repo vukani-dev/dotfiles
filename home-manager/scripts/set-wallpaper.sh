@@ -2,7 +2,9 @@
 # Set wallpaper centered with margin, complementary color background
 # Shifts dominant hue ~150 degrees with soft saturation and muted brightness
 
-SCREEN="2496x1664"
+# Auto-detect active monitor resolution
+SCREEN=$(hyprctl monitors -j | jq -r '.[0] | "\(.width)x\(.height)"')
+SCREEN=${SCREEN:-2496x1664}
 MARGIN=80
 
 IMG="$1"

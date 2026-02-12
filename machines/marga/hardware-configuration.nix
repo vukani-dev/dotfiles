@@ -15,13 +15,21 @@
   boot.initrd.kernelModules = ["nvidia" "i915" "nvidia_modeset" "nvidia_uvm" "nvidia_drm"];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
+  boot.kernelParams = [
+    "i915.enable_psr=0" # Disable Panel Self Refresh — fixes page flip stalls
+  ];
 
   boot.extraModprobeConfig = ''
-    options xe force_probe=9a60
-    options i915 force_probe=!9a60
+    options nvidia_drm fbdev=1
   '';
 
   hardware.graphics.enable = true;
+  hardware.graphics.extraPackages = with pkgs; [
+    intel-media-driver # VA-API hardware video decode (iHD for Tiger Lake+)
+  ];
+  environment.systemPackages = with pkgs; [
+    libva-utils # vainfo CLI tool
+  ];
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = true; # Fixes suspend/resume - preserves VRAM
