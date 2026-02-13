@@ -28,6 +28,7 @@
     NH_FLAKE = "${homeDirectory}/.dotfiles";
     SHELL = "zsh";
     TERM = "ghostty";
+    OLLAMA_HOST = "http://10.1.0.113:11434";
   };
 
   home.sessionPath = [
@@ -41,8 +42,6 @@
     source = ./scripts;
     recursive = true;
   };
-
-  xdg.configFile."calcurse/conf".source = ./modules/calcurse.conf;
 
   # Daily wallpaper rotation
   systemd.user.services.daily-wallpaper = {

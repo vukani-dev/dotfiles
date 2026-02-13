@@ -29,7 +29,7 @@
     swaynotificationcenter # Notifications
     libnotify # notify-send
     playerctl # Media controls
-    networkmanagerapplet # nm-applet for systray
+    kanshi # Automatic monitor profile switching
     brightnessctl # Screen brightness (used by hypridle)
     jq # JSON parsing (used by transparency toggle)
     kanshi # Auto monitor switching

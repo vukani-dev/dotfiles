@@ -2,10 +2,13 @@
 # Set wallpaper centered with margin, complementary color background
 # Shifts dominant hue ~150 degrees with soft saturation and muted brightness
 
-# Auto-detect active monitor resolution
-SCREEN=$(hyprctl monitors -j | jq -r '.[0] | "\(.width)x\(.height)"')
+# Auto-detect active monitor resolution (fallback to laptop screen)
+SCREEN=$(hyprctl monitors -j 2>/dev/null | jq -r '.[0] | "\(.width)x\(.height)"' 2>/dev/null)
 SCREEN=${SCREEN:-2496x1664}
-MARGIN=80
+
+# Scale margin proportionally (~3.2% of screen width)
+SW_DETECT=$(echo "$SCREEN" | cut -dx -f1)
+MARGIN=$((SW_DETECT * 32 / 1000))
 
 IMG="$1"
 if [ -z "$IMG" ]; then

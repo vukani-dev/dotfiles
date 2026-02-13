@@ -45,14 +45,6 @@
     fsType = "vfat";
   };
 
-  fileSystems."/mnt/jukwaa" = {
-    device = "//10.0.0.4/jukwaa";
-    fsType = "cifs";
-    options = let
-      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
-    in ["${automount_opts},credentials=/etc/nixos/smb-service"];
-  };
-
   fileSystems."/mnt/storage" = {
     device = "10.1.0.40:/mnt/storage";
     fsType = "nfs";

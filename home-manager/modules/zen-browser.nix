@@ -7,6 +7,11 @@
       DisableTelemetry = true;
       DisableFirefoxStudies = true;
       DisablePocket = true;
+      ManagedBookmarks = [
+        {toplevel_name = "Infra";}
+        {url = "http://10.1.0.114:8080"; name = "Open WebUI";}
+        {url = "http://10.1.0.100"; name = "OpenClaw";}
+      ];
       ExtensionSettings = {
         "uBlock0@raymondhill.net" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";

@@ -6,73 +6,58 @@ A NixOS configuration for managing multiple machines
 
 This configuration manages multiple NixOS machines with shared base configuration and machine-specific customizations. It uses a modular approach with the following key components:
 
-- Window Manager: dwm (custom build)
-- Terminal: st (custom build) / ghostty
-- Shell: zsh with starship prompt
+- Compositor: Hyprland (Wayland) / dwm (X11)
+- Terminal: ghostty
+- Shell: zsh with starship prompt, fzf
 - Editor: Neovim (with specialized configurations for different languages)
 - File Manager: yazi
-- Browser: Librewolf
+- Browser: Zen Browser
+- Bar: Waybar (Doom One theme)
+- Launcher: rofi
 
 ## Machines
 
-- **Marga**: Dell Precision 5560 with NVIDIA graphics
-- **Necessary**: Microsoft Surface Pro
+- **Necessary**: Microsoft Surface Laptop 4 (Intel Tiger Lake, Iris Xe) — Hyprland
+- **Marga**: Dell Precision 5560 (Intel + NVIDIA) — dwm / Hyprland
 - **Dala**: System76 Lemur
 - **Monk**: Lenovo ThinkPad X220
 
-## Hotkeys
+## Hyprland Keybinds (Mod = Super)
 
-### Window Management (Mod = Super)
+### Window Management
 
 | Keybind | Action |
 |---------|--------|
 | `Mod + h/j/k/l` | Focus window left/down/up/right |
-| `Mod + Shift + h/j/k/l` | Move window left/down/up/right |
-| `Mod + Ctrl + h/l` | Resize master area |
-| `Mod + Return` | Zoom (swap with master) |
+| `Mod + Shift + h/j/k/l` | Move window |
+| `Mod + Ctrl + h/j/k/l` | Resize window |
+| `Mod + Shift + Return` | Open terminal (ghostty) |
 | `Mod + Shift + c` | Kill focused window |
-| `Mod + Shift + q` | Quit dwm |
-| `Mod + Space` | Toggle layout |
+| `Mod + Shift + q` | Exit Hyprland |
 | `Mod + Shift + Space` | Toggle floating |
-| `Mod + Shift + f` | Toggle fullscreen |
-| `Mod + t` | Spiral/tiled layout |
-| `Mod + f` | Floating layout |
-| `Mod + m` | Monocle layout |
-| `Mod + b` | Toggle bar |
-| `Alt + Tab` | Alt-tab window switcher |
-| `Mod + grave` | Toggle scratchpad terminal |
+| `Mod + Shift + f` | Fullscreen |
+| `Mod + Space` | Toggle split |
+| `Mod + m` | Monocle (maximize) |
+| `Mod + b` | Toggle waybar |
+| `Mod + Shift + t` | Toggle transparency |
+| `Alt + Tab` | Cycle windows |
+| `Mod + grave` | Toggle scratchpad |
 
-### Tags/Workspaces
-
-| Keybind | Action |
-|---------|--------|
-| `Mod + 1-9` | Switch to tag 1-9 |
-| `Mod + Shift + 1-9` | Move window to tag 1-9 |
-| `Mod + Ctrl + 1-9` | Toggle tag view |
-| `Mod + 0` | View all tags |
-| `Mod + Shift + 0` | Tag window to all |
-| `Mod + ,` | Focus previous monitor |
-| `Mod + .` | Focus next monitor |
-| `Mod + Shift + ,` | Move window to previous monitor |
-| `Mod + Shift + .` | Move window to next monitor |
-
-### Gaps
+### Workspaces
 
 | Keybind | Action |
 |---------|--------|
-| `Mod + Mod4 + u` | Increase all gaps |
-| `Mod + Mod4 + Shift + u` | Decrease all gaps |
-| `Mod + Mod4 + 0` | Toggle gaps |
-| `Mod + Mod4 + Shift + 0` | Reset gaps to default |
+| `Mod + 1-9` | Switch to workspace 1-9 |
+| `Mod + Shift + 1-9` | Move window to workspace 1-9 |
+| 3-finger horizontal swipe | Switch workspace |
 
 ### Applications
 
 | Keybind | Action |
 |---------|--------|
-| `Mod + Shift + Return` | Open terminal (ghostty) |
 | `Mod + r` | Application launcher (rofi) |
-| `Mod + w` | Browser (librewolf) |
-| `Mod + d` | Discord |
+| `Mod + w` | Browser (Zen) |
+| `Mod + d` | Discord (vesktop) |
 | `Mod + e` | Email (thunderbird) |
 | `Mod + p` | Password manager (bitwarden) |
 | `Mod + n` | Notes (logseq) |
@@ -86,28 +71,34 @@ This configuration manages multiple NixOS machines with shared base configuratio
 | `Mod + i` | Network manager (nmtui) |
 | `Mod + q` | System monitor (gotop) |
 | `Mod + c` | Toggle syncthing |
-| `Mod + Shift + s` | Screenshot |
+| `Mod + Shift + s` | Screenshot (region) |
+| `Print` | Screenshot (full) |
 | `Mod + Shift + b` | Bluetooth manager |
-| `Mod + Shift + x` | Lock screen (slock) |
+| `Mod + Shift + x` | Lock screen (hyprlock) |
 
 ### Media Keys
 
-| Keybind | Action |
-|---------|--------|
-| `XF86MonBrightnessUp` | Increase brightness 5% |
-| `XF86MonBrightnessDown` | Decrease brightness 5% |
-| `XF86AudioRaiseVolume` | Increase volume 5% |
-| `XF86AudioLowerVolume` | Decrease volume 5% |
-| `XF86AudioMute` | Toggle mute |
+| Key | Action |
+|-----|--------|
+| `Brightness Up/Down` | Adjust brightness 5% |
+| `Volume Up/Down` | Adjust volume 5% |
+| `Mute` | Toggle mute |
 
 ### Mouse
 
 | Action | Result |
 |--------|--------|
 | `Mod + Left Click` | Move window |
-| `Mod + Middle Click` | Toggle floating |
 | `Mod + Right Click` | Resize window |
-| `Mod + Shift + Left Click` | Drag resize master |
+
+## Yazi Keybinds
+
+| Key | Action |
+|-----|--------|
+| `W` | Set hovered image as wallpaper |
+| `H` | Go to home directory |
+| `C` | Go to dotfiles |
+| `m` | Go to /mnt |
 
 ## Shell Aliases
 
@@ -118,8 +109,57 @@ This configuration manages multiple NixOS machines with shared base configuratio
 | `bup` | `nix flake update nixpkgs-bleeding` | Update bleeding edge packages |
 | `lg` | `lazygit` | Git TUI |
 | `v` | `nvim .` | Open neovim in current dir |
+| `jl` | `journal.sh` | Zen journal (ghostty + nvim, light theme) |
+| `oc` | `ssh 10.1.0.100` | SSH into OpenClaw instance |
+| `ask` | `ask.sh` | Prompt local LLM (qwen3:14b via Ollama) |
+| `beetle` | `ask.sh` (dolphin3) | Prompt Beetle (uncensored) |
+| `chat` | `oterm` | Ollama TUI with model switching |
 | `ll` | `ls -l` | Long listing |
 | `la` | `ls -a` | Show hidden files |
+
+### LLM Usage
+
+```bash
+ask "what is the capital of france"       # one-shot prompt to qwen3:14b
+cat main.py | ask "explain this code"     # pipe context
+beetle "tell me something wild"           # use dolphin3 (uncensored)
+chat                                       # interactive TUI (oterm)
+ollama run qwen3:14b                      # interactive CLI chat
+```
+
+## Journal
+
+`jl` opens a dedicated zen writing environment:
+- Spawns a separate ghostty window with warm light theme and generous padding
+- Opens the current year's journal file (`/mnt/vault/documents/life-log/YYYY.md`)
+- Auto-jumps to end of file
+- `,n` inserts a new `#MMDD` date header
+- `,w` quick saves
+- Spell check enabled, all editor chrome hidden
+
+## Wallpaper System
+
+- Daily rotation through `~/pictures/wallpapers/` using day-of-year cycling
+- Complementary color extraction via ImageMagick (HSL hue shift +150 degrees)
+- Centered with proportional margins (~3.2% of screen width)
+- Auto-detects monitor resolution (works for laptop and external displays)
+- Press `W` in yazi on any image to set it as wallpaper immediately
+
+## Necessary-Specific Features
+
+- **Kanshi**: Automatic monitor switching (docked: MateView at 3000x2000, undocked: laptop eDP-1)
+- **Hibernate**: s2idle is broken on Tiger Lake — uses direct hibernate after 30 min idle (on battery only)
+- **auto-cpufreq**: powersave on battery, performance on AC
+- **Touchpad**: tap-to-click, drag lock, natural scroll, disable while typing
+- **Sleep/wake kernel fixes**: `i915.enable_psr=0`, `i915.enable_dc=1`, `iwlwifi.power_save=0`
+
+## Local LLM Infrastructure
+
+- **Ollama server** at `10.1.0.113:11434` (LXC container on Proxmox, RTX 2080 Ti 11GB)
+- **Models**: qwen3:14b (best quality), qwen3:8b, dolphin3 (uncensored), beetle (custom personality)
+- **Open WebUI** at `10.1.0.114:8080`
+- **OpenClaw gateway** at `10.1.0.100` with Soroveya (Claude) and Beetle (local) agents
+- `OLLAMA_HOST` set globally so all tools auto-connect
 
 ## Key Features
 
@@ -130,59 +170,27 @@ This configuration manages multiple NixOS machines with shared base configuratio
 - Hardware-specific optimizations
 - Syncthing file synchronization
 - Mullvad VPN support
-- Automatic display hotplug (autorandr)
 
-### Desktop Environment
-- Custom dwm build with:
-  - Vanitygaps
-  - Systray
-  - Alt-tab functionality
-  - Scratchpad
-  - Status2d colored bar
-  - Fibonacci/spiral layout
-- Custom st terminal build with:
-  - Font ligatures
-  - True color support
-  - Emoji support
+### Desktop Environment (Hyprland)
+- Waybar with Doom One theme, Nerd Font icons, calendar tooltip
+- rofi launcher with Doom One colors
+- swaybg wallpaper with ImageMagick compositing
+- hyprlock / hypridle for lock and idle management
+- 3-finger swipe gestures for workspace switching
+- Blur and transparency controls
 
 ### Performance
 - zram swap compression
 - earlyoom (prevents OOM freezes)
 - fstrim for SSDs
 - Gamemode for gaming
-- NVIDIA power management for proper suspend/resume
+- Hibernate support with resume from swap
 
 ### Development Tools
-- Multiple Neovim configurations for:
-  - Rust
-  - Python
-  - Web Development
-  - Infrastructure as Code
-- Git integration
+- Multiple Neovim configurations (Rust, Python, Web, IaC)
+- Git integration (lazygit)
 - Docker support
-
-### Media and Gaming
-- Steam with gamemode
-- MPV
-- Jellyfin media player
-
-## Installation
-
-1. Clone this repository:
-
-```bash
-git clone https://github.com/vukani-dev/dotfiles ~/.dotfiles
-```
-
-2. Update the hostname in the appropriate machine configuration under `machines/`
-
-3. Build and switch to the configuration:
-
-```bash
-nixos-rebuild switch --flake .#<hostname>
-```
-
-Replace `hostname` with your machine name (marga, necessary, dala, or monk)
+- Claude Code, Codex, Gemini CLI
 
 ## Structure
 
@@ -197,6 +205,7 @@ Replace `hostname` with your machine name (marga, necessary, dala, or monk)
 │   ├── dala/
 │   └── monk/
 ├── modules/               # System modules
+│   ├── hyprland/          # Hyprland + waybar config
 │   ├── suckless/          # dwm & st configs
 │   ├── displays/          # Per-machine display configs
 │   ├── gaming.nix
@@ -205,24 +214,26 @@ Replace `hostname` with your machine name (marga, necessary, dala, or monk)
 │   └── ...
 └── home-manager/          # User environment
     ├── home.nix
-    ├── modules/           # User modules
-    └── scripts/           # Shell scripts
+    ├── modules/           # User modules (zsh, yazi, rofi, zen-browser)
+    ├── scripts/           # Shell scripts (wallpaper, journal, ask)
+    └── assets/            # Wallpaper collection
 ```
 
-## Customization
+## Installation
 
-### Adding a New Machine
+1. Clone this repository:
 
-1. Create a new directory under `machines/`
-2. Copy and modify the `hardware-configuration.nix` for your hardware
-3. Create a `default.nix` importing necessary modules
-4. Add a display config in `modules/displays/`
-5. Add the machine to `flake.nix`
+```bash
+git clone https://github.com/vukani-dev/dotfiles ~/.dotfiles
+```
 
-### Adding New Modules
+2. Update the hostname in the appropriate machine configuration under `machines/`
 
-1. Create a new `.nix` file under `modules/`
-2. Import it in the relevant machine configuration
+3. Build and switch to the configuration:
+
+```bash
+nh os switch ~/.dotfiles -H <hostname>
+```
 
 ## License
 

@@ -4,6 +4,8 @@
     claude-code
     codex
     gemini-cli
+    oterm
+    ollama
     lazygit
     alejandra
     git
@@ -34,8 +36,6 @@
     mupdf
     libreoffice
     thunderbird
-    calcurse
-
     # File management
     yazi
     ueberzugpp
