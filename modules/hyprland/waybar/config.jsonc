@@ -6,7 +6,7 @@
 
     "modules-left": ["hyprland/workspaces", "hyprland/window"],
     "modules-center": [],
-    "modules-right": ["pulseaudio", "network", "battery", "clock"],
+    "modules-right": ["tray", "pulseaudio", "network", "battery", "clock"],
 
     "hyprland/workspaces": {
         "format": "{icon}",

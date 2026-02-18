@@ -48,6 +48,8 @@
   # Networking
   networking = {
     networkmanager.enable = true;
+    firewall.allowedTCPPorts = [53317];
+    firewall.allowedUDPPorts = [53317];
     # hosts = {"x.x.x.x" = "test.io" };  # Consider enabling only if needed
   };
   services.nfs.server.enable = true;

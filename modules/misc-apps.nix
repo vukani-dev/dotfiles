@@ -67,6 +67,7 @@
     moonlight-qt
     parsec-bin
     virt-viewer
+    localsend
 
     # Communication
     vesktop
